@@ -1,18 +1,15 @@
-import React from 'react'
+import React from "react";
+import OurApp from "../components/OurApp";
+import { Button } from "../components/Buttons";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
   return (
-    <>
-    <div className='h-[40vh] w-full bg-[#202020] flex justify-center items-center text-white text-5xl'>Home</div>
-    <div className='h-[40vh] w-full bg-[#202020] flex justify-center items-center text-white text-5xl'>Home</div>
-    <div className='h-[40vh] w-full bg-[#202020] flex justify-center items-center text-white text-5xl'>Home</div>
-    <div className='h-[40vh] w-full bg-[#202020] flex justify-center items-center text-white text-5xl'>Home</div>
-    
-    
-    
-    
-    </>
-  )
-}
+    <div className=""> {/* Navbar 80px */}
+      <HeroSection />
+      <OurApp />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

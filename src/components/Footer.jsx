@@ -39,13 +39,13 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-themeBlack text-white w-full px-20 lg:px-32 xl:px-48 py-16 border-t border-t-themeBlue/30 flex flex-col md:flex-row justify-between gap-8">
+    <div className="bg-themeBlack text-white w-full px-20 lg:px-32 xl:px-48 py-16 border-t border-t-themeBlue/20 flex flex-col md:flex-row justify-between gap-8">
       <div className="flex flex-col gap-3">
         {footer_links1.map((item, index) => (
           <Link
             to={item.link}
             key={index}
-            className="cursor-pointer hover:text-[#81b5be] pl-2 md:pl-0"
+            className="cursor-pointer hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
           >
             {item.title}
           </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
           <Link
             to={item.link}
             key={index}
-            className="cursor-pointer hover:text-[#81b5be] pl-2 md:pl-0"
+            className="cursor-pointer hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
           >
             {item.title}
           </Link>

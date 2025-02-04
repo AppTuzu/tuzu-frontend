@@ -30,7 +30,7 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const navbarBackground =
-    scrollY > 0 ? "bg-[radial-gradient(circle,_rgba(45,45,45,0.7),_rgba(32,32,32,0.7))] backdrop-blur-md" : "bg-[radial-gradient(circle,_#2d2d2d,_#202020)]";
+    scrollY > 0 ? "bg-[radial-gradient(circle,_rgba(45,45,45,0.7),_rgba(32,32,32,0.7))] backdrop-blur-md shadow-lg" : "bg-[radial-gradient(circle,_#2d2d2d,_#202020)]";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -44,7 +44,7 @@ const Navbar = () => {
         opacity: showNavbar ? 1 : 0,
       }}
       transition={{ duration: 0.4, type: 'spring', stiffness: 100, damping: 20 }}
-      className={`flex fixed shadow-lg top-0 left-0 right-0 justify-between items-center sm:px-14 px-6 py-4 z-50 ${navbarBackground} transition-colors duration-500`}
+      className={`flex fixed top-0 left-0 right-0 justify-between items-center sm:px-14 px-6 py-4 z-50 ${navbarBackground} transition-colors duration-500`}
     >
       {/* bg-[radial-gradient(circle,_#2d2d2d,_#202020)]" */}
       {/* bg-radial from-[#202020] to-[#2d2d2d] */}
