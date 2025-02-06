@@ -1,6 +1,5 @@
 import React from "react";
 import OurApp from "../components/OurApp";
-import { Button } from "../components/Buttons";
 import HeroSection from "../components/HeroSection";
 
 const Home = () => {

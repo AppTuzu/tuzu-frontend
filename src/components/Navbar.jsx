@@ -53,7 +53,7 @@ const Navbar = () => {
           <img
             src="./logo.png"
             alt="Tuzu Logo"
-            className="w-32 cursor-pointer"
+            className="w-29 cursor-pointer"
           />
         </Link>
       </div>
