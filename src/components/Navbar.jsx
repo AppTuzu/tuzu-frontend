@@ -30,7 +30,7 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const navbarBackground =
-    scrollY > 0 ? "bg-[radial-gradient(circle,_rgba(45,45,45,0.7),_rgba(32,32,32,0.7))] backdrop-blur-md shadow-lg" : "bg-[radial-gradient(circle,_#2d2d2d,_#202020)]";
+    scrollY > 0 ? "bg-[radial-gradient(circle,_rgba(45,45,45,0.8),_rgba(32,32,32,0.8))] backdrop-blur-md shadow-lg" : "bg-[radial-gradient(circle,_#2d2d2d,_#202020)]";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
