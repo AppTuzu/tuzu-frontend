@@ -21,7 +21,7 @@ const App = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="font-poppins overflow-x-hidden">
+    <div className="font-poppins overflow-x-hidden selection:bg-themeYellow selection:text-themeBlue">
       
       <Navbar />
 
