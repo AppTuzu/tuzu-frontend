@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { NavButton } from "./Buttons";
+import { ModelContext } from "../context/ModelContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showNavbar, setShowNavbar] = useState(true);
+
+  const { toggleModal } = useContext(ModelContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +68,7 @@ const Navbar = () => {
             <span className="w-0 h-[2px] left-0 -bottom-1 absolute bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
           </Link>
 
-          <p className="text-white relative text-lg group cursor-pointer">
+          <p onClick={toggleModal} className="text-white relative text-lg group cursor-pointer">
             Our app
             <span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
           </p>
@@ -118,6 +121,7 @@ const Navbar = () => {
                 show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
               }}
               className="text-white relative text-lg group cursor-pointer"
+              onClick={toggleModal}
             >
               Our app
               <span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { ModelContext } from "../context/ModelContext";
 
 const Footer = () => {
+
+  const { toggleModal } = useContext(ModelContext);
+
   const footer_links1 = [
     {
       title: "About us",
@@ -14,15 +18,10 @@ const Footer = () => {
       link: "/contact-us",
     },
     {
-      title: "Our app",
-      link: "",
-    },
-    {
       title: "Pricing",
       link: "/pricing",
     },
   ];
-
   const footer_links2 = [
     {
       title: "Privacy policy",
@@ -50,7 +49,9 @@ const Footer = () => {
             {item.title}
           </Link>
         ))}
+        <p className="cursor-pointer hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]" onClick={toggleModal}>Our app</p>
       </div>
+
       <div className="flex flex-col gap-3">
         {footer_links2.map((item, index) => (
           <Link

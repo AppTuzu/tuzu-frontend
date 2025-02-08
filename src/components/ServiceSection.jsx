@@ -1,5 +1,4 @@
 import React from "react";
-import ServiceCard from "./ServiceCard";
 import { Button } from "./Buttons";
 
 const ServiceSection = () => {

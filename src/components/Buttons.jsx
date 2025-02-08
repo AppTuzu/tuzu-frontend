@@ -11,7 +11,7 @@ export const NavButton = () => {
 
 export const Button = ({title}) => {
   return (
-    <div className="flex items-center text-lg gap-3 w-fit justify-center px-7 py-3 bg-themeYellow rounded-2xl text-themeBlack hover:bg-themeYellow  cursor-pointer transition-all duration-500 font-medium hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30">
+    <div className="flex items-center text-lg gap-3 w-fit justify-center px-12 py-3 bg-themeYellow rounded-2xl text-themeBlack hover:bg-themeYellow  cursor-pointer transition-all duration-500 font-medium hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30">
       {title}
       {/* <FaArrowRight /> */}
     </div>
