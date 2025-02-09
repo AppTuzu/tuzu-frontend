@@ -1,8 +1,9 @@
 import React from "react";
+import PageTemplate from "../components/PageTemplate";
 
 const TermsAndConditions = () => {
 
-  data = {
+  const data = {
     title: "Terms and Conditions",
     description:
       'Welcome to Tuzu, these terms and conditions ("Terms") govern your use of our website and services. By accessing or using Tuzu’s services, you agree to comply with and be bound by these Terms. Please read them carefully.',
@@ -73,8 +74,10 @@ const TermsAndConditions = () => {
   };
 
   return (
-    <div>
-      <div></div>
+    <div className="bg-themeBlack text-white px-10 sm:px-14 md:px-22 lg:px-28 py-28 flex items-center justify-center">
+      <div className="w-full max-w-5xl">
+        <PageTemplate {...data} />
+      </div>
     </div>
   );
 };

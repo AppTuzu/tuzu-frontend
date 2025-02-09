@@ -63,6 +63,7 @@ const Footer = () => {
           </Link>
         ))}
       </div>
+
       <div className="flex flex-col w-32 gap-1">
         <Link to="/">
           <img

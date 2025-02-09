@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import { ModelContext } from "./context/ModelContext";
 import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "motion/react";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from './pages/TermsAndConditions'
+import RefundAndCancellation from './pages/RefundAndCancellation'
 
 const App = () => {
   const { isModalOpen, toggleModal } = useContext(ModelContext);
@@ -21,7 +24,7 @@ const App = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="font-poppins overflow-x-hidden selection:bg-themeYellow selection:text-themeBlue">
+    <div className="font-poppins overflow-x-hidden selection:bg-themeYellow selection:text-themeBlack">
       
       <Navbar />
 
@@ -49,6 +52,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/refund-and-cancellation-policy" element={<RefundAndCancellation />} />
       </Routes>
       <Footer />
 

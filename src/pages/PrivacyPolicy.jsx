@@ -1,9 +1,9 @@
-import { title } from "motion/react-client";
 import React from "react";
+import PageTemplate from "../components/PageTemplate";
 
 const PrivacyPolicy = () => {
     
-  data = {
+  const data = {
     title: "Privacy Policy",
     description:
       "At Tuzu, your privacy is important to us. This Privacy Policy outlines how we handle your personal information when you use our services. Since Tuzu primarily operates through Google Forms, we want to ensure you understand what information we collect, how we use it, and how we protect it.",
@@ -56,16 +56,9 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Privacy Policy</h2>
-        <p>
-          At Tuzu, your privacy is important to us. This Privacy Policy outlines
-          how we handle your personal information when you use our services.
-          Since Tuzu primarily operates through Google Forms, we want to ensure
-          you understand what information we collect, how we use it, and how we
-          protect it.
-        </p>
+    <div className="bg-themeBlack text-white px-10 sm:px-14 md:px-22 lg:px-28 py-28 flex items-center justify-center">
+      <div className="w-full max-w-5xl">
+        <PageTemplate {...data} />
       </div>
     </div>
   );
