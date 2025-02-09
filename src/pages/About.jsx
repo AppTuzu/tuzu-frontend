@@ -1,6 +1,8 @@
 import React from "react";
 import OurApp from "../components/OurApp";
 import FAQ from "../components/FAQ";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaEnvelope  } from "react-icons/fa";
 
 const About = () => {
   return (
@@ -25,9 +27,28 @@ const About = () => {
         </div>
       </div>
       <FAQ />
+      <div className="py-16 flex flex-col items-center justify-center gap-5 text-white">
+        <div className="text-center">
+          <h2 className="text-3xl font-semibold">Have more queries?</h2>
+          <h3 className="text-3xl font-semibold">Contact us</h3>
+        </div>
+        <div className="flex flex-col gap-3 items-center justify-center">
+          <Button icon={<IoLogoWhatsapp />} title={"Chat with us"} />
+          <Button icon={<FaEnvelope  />} title={"Write to us"} />
+        </div>
+      </div>
       <OurApp />
     </div>
   );
 };
+
+const Button = ({icon, title}) => {
+  return (
+    <button className="bg-themeYellow text-black w-64 px-8 py-3 text-lg rounded-lg justify-center flex items-center gap-3 font-semibold cursor-pointer hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30 active:scale-99 transition-all duration-300">
+      {icon}
+      {title}
+    </button>
+  );
+}
 
 export default About;
