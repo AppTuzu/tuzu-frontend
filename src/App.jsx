@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "motion/react";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from './pages/TermsAndConditions'
 import RefundAndCancellation from './pages/RefundAndCancellation'
+import Contact from "./pages/Contact";
 
 const App = () => {
   const { isModalOpen, toggleModal } = useContext(ModelContext);
@@ -39,8 +40,8 @@ const App = () => {
             <h2 className="text-2xl font-bold">Stay Tuned</h2>
             <p className="text-center font-light">Get ready for a game-changing social media content editing app! Our product is in the works, promising seamless editing and unmatched creativity. Stay tuned for exclusive updates.</p>
             <div className="flex gap-8 items-center justify-center">
-              <img src='../src/assets/android-logo.png' alt="Google Play Store Logo" className="w-36"/>
-              <img src='../src/assets/apple-logo.png' alt="App Store Logo" className="w-36"/>
+              <img src='../src/assets/android-logo.png' alt="Google Play Store Logo" className="w-24 sm:w-36"/>
+              <img src='../src/assets/apple-logo.png' alt="App Store Logo" className="w-24 sm:w-36"/>
             </div>
             
           </motion.div>
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/refund-and-cancellation-policy" element={<RefundAndCancellation />} />
+        <Route path="/contact-us" element={<Contact />} />
       </Routes>
       <Footer />
 
