@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const PageTemplate = ({ title, description, content, endNote }) => {
   return (
