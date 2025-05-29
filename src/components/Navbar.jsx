@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { motion } from "motion/react";
-import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
+import { Link, useNavigate } from "react-router-dom";
 import { NavButton } from "./Buttons";
 import { ModelContext } from "../context/ModelContext";
 
@@ -9,6 +9,8 @@ const Navbar = () => {
 	const [scrollY, setScrollY] = useState(0);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const [showNavbar, setShowNavbar] = useState(true);
+
+	const navigate = useNavigate();
 
 	const { toggleModal } = useContext(ModelContext);
 
@@ -58,8 +60,14 @@ const Navbar = () => {
 		>
 			{/* bg-[radial-gradient(circle,_#2d2d2d,_#202020)]" */}
 			{/* bg-radial from-[#202020] to-[#2d2d2d] */}
+
+			{/* logo */}
 			<div>
-				<Link onClick={() => setIsOpen(false)} to={"/"} className="cursor-pointer">
+				<Link
+					onClick={() => setIsOpen(false)}
+					to={"/"}
+					className="cursor-pointer"
+				>
 					<img
 						src="./logo.png"
 						alt="Tuzu Logo"
@@ -68,7 +76,9 @@ const Navbar = () => {
 				</Link>
 			</div>
 
+			{/* nav items */}
 			<div className="flex items-center justify-center">
+				{/* larger devices */}
 				<div className="hidden lg:flex items-center font-light gap-12">
 					<Link to={"/about"} className="text-white text-lg group relative">
 						About us
@@ -83,80 +93,105 @@ const Navbar = () => {
 						<span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
 					</p>
 
-					<NavButton />
+					<NavButton onClick={() => navigate("/create")} />
 				</div>
 
+				{/* smaller devices */}
 				<div className="lg:hidden">
 					<Icon isOpen={isOpen} toggleMenu={toggleMenu} />
 
-					<motion.div
-						initial="hidden"
-						animate={isOpen ? "show" : "hidden"}
-						exit="hidden"
-						variants={{
-							hidden: {
-								maxHeight: 0,
-								opacity: 0,
-								overflow: "hidden",
-								transition: {
-									duration: 0.4,
-									ease: "linear",
-									delay: 0.25,
-								},
-							},
-							show: {
-								maxHeight: 500,
-								opacity: 1,
-								transition: {
-									duration: 0.4,
-									ease: "linear",
-									staggerChildren: 0.2,
-									delayChildren: 0.5,
-								},
-							},
-						}}
-						className={`w-screen bg-[radial-gradient(circle,_#2d2d2d,_#202020)] sm:px-14 px-6 py-8 absolute left-0 top-[75px] flex flex-col justify-center items-start gap-8`}
-					>
-						<motion.div
-							variants={{
-								hidden: { opacity: 0, y: 40, transition: { duration: 0.3 } },
-								show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-							}}
-						>
-							<Link
-								onClick={toggleMenu}
-								to={"/about"}
-								className="text-white relative text-lg group"
+					<AnimatePresence>
+						{isOpen && (
+							<motion.div
+								initial="hidden"
+								// animate={isOpen ? "show" : "hidden"}
+								animate="show"
+								exit="hidden"
+								variants={{
+									hidden: {
+										maxHeight: 0,
+										opacity: 0,
+										overflow: "hidden",
+										pointerEvents: "none",
+										transition: {
+											duration: 0.4,
+											ease: "linear",
+											delay: 0.25,
+										},
+									},
+									show: {
+										maxHeight: 500,
+										opacity: 1,
+										pointerEvents: "auto",
+										transition: {
+											duration: 0.4,
+											ease: "linear",
+											staggerChildren: 0.2,
+											delayChildren: 0.5,
+										},
+									},
+								}}
+								className={`w-screen bg-[radial-gradient(circle,_#2d2d2d,_#202020)] sm:px-14 px-6 py-8 absolute left-0 top-[75px] flex flex-col justify-center items-start gap-8`}
 							>
-								About us
-								<span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
-							</Link>
-						</motion.div>
+								<motion.div
+									variants={{
+										hidden: {
+											opacity: 0,
+											y: 40,
+											transition: { duration: 0.3 },
+										},
+										show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+									}}
+								>
+									<Link
+										onClick={toggleMenu}
+										to={"/about"}
+										className="text-white relative text-lg group"
+									>
+										About us
+										<span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
+									</Link>
+								</motion.div>
 
-						<motion.p
-							variants={{
-								hidden: { opacity: 0, y: 40, transition: { duration: 0.3 } },
-								show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-							}}
-							className="text-white relative text-lg group cursor-pointer"
-							onClick={() => {
-								toggleMenu()
-								toggleModal()
-							}}
-						>
-							Our app
-							<span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
-						</motion.p>
+								<motion.p
+									variants={{
+										hidden: {
+											opacity: 0,
+											y: 40,
+											transition: { duration: 0.3 },
+										},
+										show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+									}}
+									className="text-white relative text-lg group cursor-pointer"
+									onClick={() => {
+										toggleMenu();
+										toggleModal();
+									}}
+								>
+									Our app
+									<span className="w-0 left-0 -bottom-1 absolute h-[2px] bg-white/70 origin-left group-hover:w-full transition-all duration-500" />
+								</motion.p>
 
-						<motion.div
-							variants={{
-								hidden: { opacity: 0, y: 40, transition: { duration: 0.3 } },
-								show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-							}}
-						>
-							<NavButton />
-						</motion.div>
-					</motion.div>
+								<motion.div
+									variants={{
+										hidden: {
+											opacity: 0,
+											y: 40,
+											transition: { duration: 0.3 },
+										},
+										show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+									}}
+								>
+									<NavButton
+										onClick={() => {
+											toggleMenu();
+											navigate("/create");
+										}}
+									/>
+								</motion.div>
+							</motion.div>
+						)}
+					</AnimatePresence>
 				</div>
 			</div>
 		</motion.nav>

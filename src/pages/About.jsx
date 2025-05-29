@@ -1,5 +1,5 @@
 import OurApp from "../components/OurApp";
-// import FAQ from "../components/FAQ";
+
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaEnvelope } from "react-icons/fa";
 
@@ -44,31 +44,36 @@ const About = () => {
 			</div>
 
 			{/* missions */}
-			<div className="w-full py-14 border-b border-b-themeBlue/20 px-7 sm:px-12 md:px-16 text-white">
-				<div
-					className="w-full space-y-6 md:space-y-8 max-w-2xl mx-auto p-8  border-1 rounded-2xl border-themeYellow/40"
-					style={{
-						background:
-							"linear-gradient(to bottom, rgba(32,32,32,0.15) 0%, rgba(115,115,115,0.15) 50%, rgba(12,192,223,0.15) 100%)",
-					}}
-				>
-					<div>
-						<h2 className="font-bold text-xl md:text-2xl">Our mission</h2>
-						<p className="text-sm md:text-lg">
-							To empower creators, influencers, and businesses by providing
-							seamless content creation services that simplify the process and
-							bring ideas to life.
-						</p>
-					</div>
-					<div>
-						<h2 className="font-bold text-xl md:text-2xl">Our vision</h2>
-						<p className="text-sm md:text-lg">
-							To be your all-in-one solution for social media content creation,
-							providing seamless services that cater to all your content needs
-							from editing to design and beyond.
-						</p>
+			<div className="w-full py-14 border-b border-b-themeBlue/20 px-7 sm:px-12 md:px-16 text-white [background-size:50px_50px] [background-image:linear-gradient(to_right,#18181b_4px,transparent_4px),linear-gradient(to_bottom,#18181b_4px,transparent_4px)]">
+				
+				<div className="overflow-hidden w-full relative max-w-2xl mx-auto p-10  border-1 rounded-2xl border-themeYellow/40 bg-themeBlack">
+					<div
+						className="absolute inset-0 z-10"
+						style={{
+							background:
+								"linear-gradient(to bottom, #202020 0%, rgba(20,20,20,0.5) 50%, rgba(12,192,223,0.2) 100%)",
+						}}
+					/>
+					<div className="relative z-20">
+						<div className="mb-6 md:mb-8">
+							<h2 className="font-bold text-xl md:text-2xl">Our mission</h2>
+							<p className="text-sm md:text-lg">
+								To empower creators, influencers, and businesses by providing
+								seamless content creation services that simplify the process and
+								bring ideas to life.
+							</p>
+						</div>
+						<div>
+							<h2 className="font-bold text-xl md:text-2xl">Our vision</h2>
+							<p className="text-sm md:text-lg">
+								To be your all-in-one solution for social media content
+								creation, providing seamless services that cater to all your
+								content needs from editing to design and beyond.
+							</p>
+						</div>
 					</div>
 				</div>
+
 				<div className="w-full max-w-4xl mx-auto mt-16">
 					<h2 className="font-bold text-xl md:text-2xl text-center mb-5">
 						Why choose Tuzu?
@@ -97,7 +102,9 @@ const About = () => {
 								reels, we’ve got you covered
 							</li>
 						</ul>
-						<p className="mt-5">With Tuzu, creating impactful content has never been easier!</p>
+						<p className="mt-5">
+							With Tuzu, creating impactful content has never been easier!
+						</p>
 					</div>
 				</div>
 			</div>
@@ -105,8 +112,10 @@ const About = () => {
 			{/* contact */}
 			<div className="py-16 flex flex-col items-center justify-center gap-5 text-white">
 				<div className="text-center">
-					<h2 className="text-3xl font-semibold">Have more queries?</h2>
-					<h3 className="text-3xl font-semibold">Contact us</h3>
+					<h2 className="text-lg md:text-3xl font-semibold">
+						Have more queries?
+					</h2>
+					<h3 className="text-lg md:text-3xl font-semibold">Contact us</h3>
 				</div>
 				<div className="flex flex-col gap-3 items-center justify-center">
 					<Button icon={<IoLogoWhatsapp />} title={"Chat with us"} />
@@ -121,7 +130,7 @@ const About = () => {
 
 const Button = ({ icon, title }) => {
 	return (
-		<button className="bg-themeYellow text-black w-64 px-8 py-3 text-lg rounded-lg justify-center flex items-center gap-3 font-semibold cursor-pointer hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30 active:scale-99 transition-all duration-300">
+		<button className="bg-themeYellow text-black w-54 md:w-64 px-8 py-2 md:py-3 text-lg rounded-lg justify-center flex items-center gap-3 font-semibold cursor-pointer hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30 active:scale-99 transition-all duration-300">
 			{icon}
 			{title}
 		</button>

@@ -14,6 +14,7 @@ import RefundAndCancellation from './pages/RefundAndCancellation'
 import Contact from "./pages/Contact";
 import Service from "./pages/Service";
 import NotFound from "./pages/NotFound";
+import Form from "./pages/Form";
 
 const App = () => {
   const { isModalOpen, toggleModal } = useContext(ModelContext);
@@ -28,7 +29,7 @@ const App = () => {
   }, [isModalOpen]);
 
   return (
-		<div className="font-poppins overflow-x-hidden selection:bg-themeYellow selection:text-themeBlack">
+		<div className="font-poppins overflow-x-hidden selection:bg-themeYellow/60 selection:text-themeBlack">
 			<Navbar />
 
 			<AnimatePresence>
@@ -53,7 +54,7 @@ const App = () => {
 								onClick={toggleModal}
 								className="absolute right-5 top-4 text-3xl md:top-5 md:right-7 cursor-pointer hover:bg-zinc-600 rounded-full p-0.5 hover:scale-105"
 							/>
-							<h2 className="text-2xl font-bold">We're working on it!</h2>
+							<h2 className="text-lg mt-4 md:text-2xl font-bold">We're working on it!</h2>
 							<p className="text-center font-light">
 								Your all-in-one content solution, we're building a platform to
 								meet all your social media content needs from editing to design
@@ -80,6 +81,7 @@ const App = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/service/:slug" element={<Service />} />
+				<Route path="/create" element={<Form />} />
 				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 				<Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 				<Route

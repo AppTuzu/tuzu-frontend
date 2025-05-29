@@ -59,7 +59,7 @@ const ServiceSection = () => {
 					{serviceData.map((service, index) => (
 						<div
 							key={index}
-							className="rounded-3xl p-0.5"
+							className="rounded-3xl p-0.5 max-w-[600px]"
 							style={{
 								background:
 									"linear-gradient(90deg, rgba(12,192,223,0.7) 0%, rgba(60,60,60,1) 25%, rgba(60,60,60,1) 75%, rgba(12,192,223,0.7) 100%)",
