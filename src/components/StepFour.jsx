@@ -1,18 +1,13 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '../components/ui/button';
-import { Checkbox } from '../components/ui/checkbox';
-import { Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from "motion/react";
+import { Checkbox } from "../components/ui/checkbox";
+import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const StepFour = ({ formData, updateFormData, agreements, setAgreements}) => {
-  
+const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
+
 	const handleAgreementChange = (key, checked) => {
 		setAgreements({ ...agreements, [key]: checked });
 	};
-
-	// const allAgreed = Object.values(agreements).every(Boolean);
-	// console.log(allAgreed);
 
 	return (
 		<motion.div
@@ -21,9 +16,7 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements}) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-			{/* <p className="text-gray-500 text-sm">
-        Review your order and finish & agree to the terms before payment
-      </p> */}
+
 
 			{/* Selected Content Type */}
 			<div className="space-y-4">
@@ -193,7 +186,11 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements}) => {
 				</div>
 				<ul className="text-sm text-green-700 space-y-1">
 					<li>• Content Type: {formData.contentType || "Social media post"}</li>
-					<li>• Canvas: {formData.canvasType}</li>
+					{formData.contentType === "Social media post (post, story, etc.)" ? (
+						<li>• Canvas: {formData.canvasType}</li>
+					) : (
+						<li>• Video duration: {formData.videoDuration}</li>
+					)}
 					<li>• Files: {formData.files.length} uploaded</li>
 					<li>• Instructions: {formData.instructions.length} added</li>
 					<li>• Links: {formData.relatedLinks.length} provided</li>
@@ -218,7 +215,6 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements}) => {
 					{allAgreed ? "Checkout" : "Please accept all terms to continue"}
 				</Button>
 			</motion.div> */}
-
 		</motion.div>
 	);
 };

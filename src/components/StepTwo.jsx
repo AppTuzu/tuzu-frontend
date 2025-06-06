@@ -1,10 +1,11 @@
 import { useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
 import { Upload, Image, Video, Check } from "lucide-react";
 import { canvasTypeInfo, videoDurationInfo } from "@/utils/data";
+import { IoMdClose } from "react-icons/io";
 
 const StepTwo = ({ formData, updateFormData, setError }) => {
 	const fileInputRef = useRef(null);
@@ -36,7 +37,7 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 		if (files && files[0]) {
 			updateFormData({ textToSpeechFile: files[0] });
 		}
-	}
+	};
 
 	const renderDynamicContent = () => {
 		if (formData.contentType === "Social media post (post, story, etc.)") {
@@ -111,7 +112,10 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 										value !== "speech-script"
 											? ""
 											: formData.textToSpeechScript || "",
-									textToSpeechFile: value !== "speech-file" ? null : formData.textToSpeechFile || null,
+									textToSpeechFile:
+										value !== "speech-file"
+											? null
+											: formData.textToSpeechFile || null,
 								});
 							}}
 							className="space-y-1"
@@ -214,38 +218,77 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 
 			{/* Upload Files */}
 			<div className="space-y-4">
-				{/* vid upload */}
 				<div>
 					<label className="block text-sm font-medium text-gray-700 mb-3">
 						Upload files*
 					</label>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+						{formData.files.length > 0 &&
+							formData.files.map((file, idx) => {
+								const url = URL.createObjectURL(file);
+								const isImage = file.type.startsWith("image/");
+								const isVideo = file.type.startsWith("video/");
+								return (
+									<motion.div
+										initial={{ opacity: 0, scale: "80%" }}
+										animate={{ opacity: 1, scale: "100%" }}
+										key={idx}
+										className=" bg-gray-300 rounded-lg overflow-hidden relative h-32"
+									>
+										{isImage ? (
+											<img
+												src={url}
+												alt={file.name}
+												className="object-cover w-full h-full"
+												onLoad={() => URL.revokeObjectURL(url)}
+											/>
+										) : isVideo ? (
+											<video
+												src={url}
+												controls
+												className="object-cover w-full h-full"
+												onLoadedData={() => URL.revokeObjectURL(url)}
+											/>
+										) : (
+											<div className="flex flex-col items-center justify-center w-full h-full text-white">
+												<span className="text-xs">{file.name}</span>
+											</div>
+										)}
+										<span
+											className="absolute right-2 top-2 z-50 size-7 rounded-full place-content-center place-items-center bg-themeYellow cursor-pointer hover:bg-yellow-300"
+											onClick={() => {
+												const newFiles = formData.files.filter(
+													(_, i) => i !== idx
+												);
+												updateFormData({ files: newFiles });
+											}}
+										>
+											<IoMdClose size={18} className="stroke-[15px]" />
+										</span>
+									</motion.div>
+								);
+							})}
+
 						<motion.div
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}
 							onClick={() => fileInputRef.current?.click()}
-							className="border-2 border-dashed border-yellow-300 rounded-lg p-6 text-center cursor-pointer hover:border-yellow-400 transition-colors"
+							className="border-2 border-dashed border-yellow-300 rounded-lg p-6 text-center cursor-pointer hover:border-yellow-400 transition-colors flex items-center justify-center h-32"
 						>
-							{formData.files.length > 0 ? (
-								<div className="flex items-center justify-center">
-									<Video className="w-8 h-8 text-green-500" />
-									<span className="ml-2 text-sm text-green-600">
-										{formData.files.length} file(s) uploaded
-									</span>
-								</div>
-							) : (
-								<div className="flex flex-col">
-									<Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-									<p className="text-sm text-gray-500">Upload files</p>
-								</div>
-							)}
-						</motion.div>
-
-						{/* {url && (
-							<div className="border-2 border-dashed border-gray-200 rounded-lg p-6 flex items-center justify-center">
-								<img src={url} alt="" />
+							{/* {formData.files.length > 0 ? (
+									<div className="flex items-center justify-center">
+										<Video className="w-8 h-8 text-green-500" />
+										<span className="ml-2 text-sm text-green-600">
+											{formData.files.length} file(s) uploaded
+										</span>
+									</div>
+								) : ( */}
+							<div className="flex flex-col">
+								<Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+								<p className="text-sm text-gray-500">Upload files</p>
 							</div>
-						)} */}
+							{/* )} */}
+						</motion.div>
 					</div>
 					<p className="text-xs text-gray-400 mt-2">
 						Attach images, videos, or other files for editing
@@ -342,7 +385,7 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 						updateFormData({
 							textOverlay: value,
 							customText: value !== "custom" ? "" : formData.customText || "",
-							textFile: value !== 'file' ? null : formData.textFile || null
+							textFile: value !== "file" ? null : formData.textFile || null,
 						})
 					}
 					className="space-y-2"
