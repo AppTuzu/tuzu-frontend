@@ -84,9 +84,9 @@ export const videoDurationInfo = [
 ];
 
 export const initialFormData = {
-	email: "sid@gmail.com",
-	number: "1234567895",
-	contentType: "Vertical video (reels, shorts, etc.)",
+	email: "",
+	number: "",
+	contentType: "Social media post (post, story, etc.)",
 	files: [],
 	brandKit: null,
 	canvasType: "instagram-post-4-5",

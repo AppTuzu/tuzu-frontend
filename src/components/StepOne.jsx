@@ -9,11 +9,10 @@ import {
 // import { Input } from "./ui/input";
 
 const StepOne = ({ formData, updateFormData, setError }) => {
-	
 	const contentTypes = [
 		"Social media post (post, story, etc.)",
 		"Vertical video (reels, shorts, etc.)",
-		"AI avatar (reels, shorts, etc.)",
+		// "AI avatar (reels, shorts, etc.)",
 	];
 
 	//Todo ->  rowos11660@ofular.com
@@ -92,6 +91,14 @@ const StepOne = ({ formData, updateFormData, setError }) => {
 									{type}
 								</SelectItem>
 							))}
+							<SelectItem
+								value="AI avatar (reels, shorts, etc.)"
+								className="py-2.5 cursor-pointer"
+								disabled
+							>
+								AI avatar (reels, shorts, etc.)
+								<span className="text-xs bg-themeYellow font-semibold p-1 px-3 rounded-md border border-yellow-500">Coming Soon...</span>
+							</SelectItem>
 						</SelectContent>
 					</Select>
 				</div>

@@ -16,10 +16,10 @@ const FormPrev = () => {
 	const [formData, setFormData] = useState(initialFormData);
 	// !make it false development stage
 	const [agreements, setAgreements] = useState({
-		upfrontPayment: true,
-		additionalUpgrades: true,
-		termsConditions: true,
-		privacyPolicy: true,
+		upfrontPayment: false,
+		additionalUpgrades: false,
+		termsConditions: false,
+		privacyPolicy: false,
 	});
 	const [error, setError] = useState("");
 	const [orderId, setOrderId] = useState("");
