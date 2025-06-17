@@ -26,7 +26,7 @@ const FormPrev = () => {
 	const [isOrderCompleted, setIsOrderCompleted] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [uploadProgress, setUploadProgress] = useState(0);
-
+ 
 	useEffect(() => {
 		const isSocialMedia =
 			formData.contentType === "Social media post (post, story, etc.)";
