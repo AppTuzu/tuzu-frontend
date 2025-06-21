@@ -63,25 +63,123 @@ export const canvasTypeInfo = [
 export const videoDurationInfo = [
 	{
 		id: "d1",
-		title: "15 sec",
-		value: "15-sec",
+		title: "30 seconds",
+		value: "30-seconds",
 	},
 	{
 		id: "d2",
-		title: "30 sec",
-		value: "30-sec",
+		title: "60 seconds",
+		value: "60-seconds",
 	},
 	{
 		id: "d3",
-		title: "60 sec",
-		value: "60-sec",
+		title: "90 seconds",
+		value: "90-seconds",
 	},
 	{
 		id: "d4",
-		title: "90 sec",
-		value: "90-sec",
+		title: "120 seconds",
+		value: "120-seconds",
 	},
 ];
+
+export const faqData = [
+	{
+		id: 1,
+		question: "What is Tuzu?",
+		answer:
+			"Tuzu is a platform that offers social media content creation services, including post designs, video editing and more.",
+	},
+	{
+		id: 2,
+		question: "Who can use Tuzu?",
+		answer:
+			"Creators, influencers and businesses looking to enhance their social media presence can use Tuzu.",
+	},
+	{
+		id: 3,
+		question: "How does Tuzu work?",
+		answer:
+			"Simply submit your content details and our team will deliver polished, ready to post content.",
+	},
+	{
+		id: 4,
+		question: "What types of content can Tuzu create?",
+		answer:
+			"We create engaging posts, reels and designs tailored for social media.",
+	},
+	{
+		id: 5,
+		question: "How long does it take to receive content?",
+		answer:
+			"Delivery times may vary, but most projects are completed within 72 hours.",
+	},
+	{
+		id: 6,
+		question: "Can I request revisions?",
+		answer:
+			"Yes, one free revision is available. Additional revisions may incur charges.",
+	},
+	{
+		id: 7,
+		question: "Is Tuzu suitable for small businesses?",
+		answer: "Absolutely! Tuzu is designed to support businesses of all sizes.",
+	},
+	{
+		id: 8,
+		question: "How do I get started with Tuzu?",
+		answer:
+			"Visit our website, fill out the request form, and we'll handle the rest.",
+	},
+];
+// {
+// 	id: 1,
+// 	question: "How do I place an order?",
+// 	answer:
+// 		'Select the desired service, click "Order Now," and follow the checkout process to complete your purchase.',
+// },
+// {
+// 	id: 2,
+// 	question: "Is there an upfront payment?",
+// 	answer:
+// 		"Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from $9.99 to $18.99 a month. No extra costs, no contracts.",
+// },
+// {
+// 	id: 3,
+// 	question: "What happens after I place my order?",
+// 	answer:
+// 		"Watch anywhere, anytime, on an unlimited number of devices. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.",
+// },
+// {
+// 	id: 4,
+// 	question: "How do I submit my content details?",
+// 	answer:
+// 		"Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.",
+// },
+// {
+// 	id: 5,
+// 	question: "What is the process for content creation?",
+// 	answer:
+// 		"Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+// },
+// {
+// 	id: 6,
+// 	question: "Can I request revisions?",
+// 	answer:
+// 		"Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+// },
+// {
+// 	id: 7,
+// 	question: "How will I receive the final content?",
+// 	answer:
+// 		"Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+// },
+// {
+// 	id: 8,
+// 	question: "What if I need additional support?",
+// 	answer:
+// 		"Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.",
+// },
 
 export const initialFormData = {
 	email: "",
@@ -90,7 +188,7 @@ export const initialFormData = {
 	files: [],
 	brandKit: null,
 	canvasType: "instagram-post-4-5",
-	videoDuration: "15-sec",
+	videoDuration: "30-seconds",
 	language: "english",
 	textToSpeech: "no",
 	textToSpeechFile: null,

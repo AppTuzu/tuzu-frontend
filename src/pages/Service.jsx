@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { servicePageInfo } from "../utils/data";
 import { Button } from "../components/Buttons";
-// import FAQ from '../components/FAQ'
+import FAQ from "../components/FAQ";
 
 const Service = () => {
 	const { slug } = useParams();
@@ -9,10 +9,12 @@ const Service = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="pt-32 bg-themeBlack">
+		<div className="pt-28 bg-themeBlack">
 			{/* img conatainer */}
-			<div className="w-[80%] mx-auto mb-14 rounded-xl max-w-3xl overflow-hidden h-40 md:h-52">
-				<img src={data.img} alt="" className="w-full h-full object-cover" />
+			<div className="px-6 max-w-3xl mx-auto">
+				<div className=" mx-auto mb-10 rounded-xl max-w-3xl overflow-hidden h-44 md:h-52">
+					<img src={data.img} alt="" className="w-full h-full object-cover" />
+				</div>
 			</div>
 
 			{/* main container */}
@@ -47,9 +49,14 @@ const Service = () => {
 							{!data.upgrades && (
 								<p className="mt-2 italic text-sm">
 									(See{" "}
-									<span className="text-themeBlue cursor-pointer hover:underline">
+									<a
+										href="/pricing"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-themeBlue cursor-pointer hover:underline"
+									>
 										pricing
-									</span>{" "}
+									</a>{" "}
 									for full breakdown of base services and extra costs)
 								</p>
 							)}
@@ -83,14 +90,14 @@ const Service = () => {
 						</div>
 					</div>
 					<div
-						className="w-[90%] mx-auto rounded-3xl max-w-xl p-0.5"
+						className="mx-auto rounded-xl max-w-3xl p-0.5"
 						style={{
 							background:
 								"linear-gradient(90deg, rgba(12,192,223,0.7) 0%, rgba(60,60,60,1) 25%, rgba(60,60,60,1) 75%, rgba(12,192,223,0.7) 100%)",
 						}}
 					>
 						<div
-							className="flex h-full w-full flex-col gap-1 justify-center items-center rounded-[23px] p-5 md:px-16"
+							className="flex h-full w-full flex-col gap-1 justify-center items-center rounded-[13px] p-5 md:px-16"
 							style={{
 								background: `linear-gradient(rgba(32, 32, 32, 0.8), rgba(32, 32, 32, 0.8)), url(${data.ctaImg})`,
 								backgroundSize: "cover",
@@ -107,7 +114,7 @@ const Service = () => {
 					</div>
 				</div>
 			</div>
-			{/* <FAQ /> */}
+			<FAQ />
 		</div>
 	);
 };

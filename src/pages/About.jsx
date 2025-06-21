@@ -1,7 +1,8 @@
 import OurApp from "../components/OurApp";
-
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaEnvelope } from "react-icons/fa";
+import FAQ from "@/components/FAQ";
+
 
 const About = () => {
 	return (
@@ -45,7 +46,6 @@ const About = () => {
 
 			{/* missions */}
 			<div className="w-full py-14 border-b border-b-themeBlue/20 px-7 sm:px-12 md:px-16 text-white [background-size:50px_50px] [background-image:linear-gradient(to_right,#18181b_4px,transparent_4px),linear-gradient(to_bottom,#18181b_4px,transparent_4px)]">
-				
 				<div className="overflow-hidden w-full relative max-w-2xl mx-auto p-10  border-1 rounded-2xl border-themeYellow/40 bg-themeBlack">
 					<div
 						className="absolute inset-0 z-10"
@@ -109,8 +109,10 @@ const About = () => {
 				</div>
 			</div>
 
+			<FAQ />
+
 			{/* contact */}
-			<div className="py-16 flex flex-col items-center justify-center gap-5 text-white">
+			<div className="py-16 border-t border-t-themeBlue/20 flex flex-col items-center justify-center gap-5 text-white">
 				<div className="text-center">
 					<h2 className="text-lg md:text-3xl font-semibold">
 						Have more queries?

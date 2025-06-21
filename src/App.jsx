@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Service from "./pages/Service";
 import NotFound from "./pages/NotFound";
 import Form from "./pages/Form";
+import Pricing from "./pages/Pricing";
 
 const App = () => {
   const { isModalOpen, toggleModal } = useContext(ModelContext);
@@ -27,6 +28,9 @@ const App = () => {
       document.body.style.overflow = "auto";
     };
   }, [isModalOpen]);
+
+  //! Entry Animations
+  //! Mobile Responsive
 
   return (
 		<div className="font-poppins overflow-x-hidden selection:bg-themeYellow/60 selection:text-themeBlack">
@@ -89,6 +93,7 @@ const App = () => {
 					element={<RefundAndCancellation />}
 				/>
 				<Route path="/contact-us" element={<Contact />} />
+				<Route path="/pricing" element={<Pricing />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<Footer />

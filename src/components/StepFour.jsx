@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Checkbox } from "../components/ui/checkbox";
 import { Check } from "lucide-react";
-import { Link } from "react-router-dom";
+import { renderPrice } from "@/utils/helperFunction";
 
 const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 
@@ -16,8 +16,6 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-
-
 			{/* Selected Content Type */}
 			<div className="space-y-4">
 				<label className="block text-sm font-medium text-gray-700">
@@ -45,7 +43,7 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 					transition={{ delay: 0.1 }}
 					className="text-xl md:text-2xl font-bold text-cyan-500"
 				>
-					Total price: ₹249
+					Total price: ₹{renderPrice(formData)}
 				</motion.div>
 			</div>
 
@@ -82,12 +80,14 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 					If your request includes extra edits like custom animations, advanced
 					retouching, or special effects, we will review your instructions and
 					confirm the additional cost. Check our pricing details here:{" "}
-					<Link
-						to="/pricing"
+					<a
+						href="/pricing"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="text-themeBlue hover:underline transition-all duration-200 cursor-pointer"
 					>
 						Pricing
-					</Link>
+					</a>
 					.
 				</motion.div>
 
@@ -135,12 +135,14 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 						/>
 						<label htmlFor="terms" className="text-sm text-gray-700">
 							I agree to the{" "}
-							<Link
-								to="/terms-and-conditions"
+							<a
+								href="/terms-and-conditions"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="text-themeBlue hover:underline transition-all duration-200 cursor-pointer"
 							>
 								Terms & Conditions
-							</Link>
+							</a>
 							.
 						</label>
 					</motion.div>
@@ -161,12 +163,14 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 						/>
 						<label htmlFor="privacy" className="text-sm text-gray-700">
 							I acknowledge the{" "}
-							<Link
-								to="/privacy-policy"
+							<a
+								href="/privacy-policy"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="text-themeBlue hover:underline transition-all duration-200 cursor-pointer"
 							>
 								Privacy & policy
-							</Link>
+							</a>
 							.
 						</label>
 					</motion.div>

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
 import { Plus, X } from "lucide-react";
 
 const StepThree = ({ formData, updateFormData }) => {
@@ -48,9 +47,6 @@ const StepThree = ({ formData, updateFormData }) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-			{/* <p className="text-gray-500 text-sm">
-				Share your edit instructions and reference links for inspiration
-			</p> */}
 
 			{/* Add Instructions */}
 			<div className="space-y-4">

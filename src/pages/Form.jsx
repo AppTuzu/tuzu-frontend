@@ -14,7 +14,6 @@ import OrderLoading from "@/components/OrderLoading";
 const FormPrev = () => {
 	const [currentStep, setCurrentStep] = useState(1);
 	const [formData, setFormData] = useState(initialFormData);
-	// !make it false development stage
 	const [agreements, setAgreements] = useState({
 		upfrontPayment: false,
 		additionalUpgrades: false,
@@ -26,7 +25,7 @@ const FormPrev = () => {
 	const [isOrderCompleted, setIsOrderCompleted] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [uploadProgress, setUploadProgress] = useState(0);
- 
+
 	useEffect(() => {
 		const isSocialMedia =
 			formData.contentType === "Social media post (post, story, etc.)";
@@ -34,15 +33,13 @@ const FormPrev = () => {
 		setFormData((prev) => ({
 			...prev,
 			// If social media → clear video fields
-			videoDuration: isSocialMedia ? "" : prev.videoDuration || "15-sec",
+			videoDuration: isSocialMedia ? "" : prev.videoDuration || "30-seconds",
 			textToSpeech: isSocialMedia ? "" : prev.textToSpeech || "no",
 			textToSpeechFile: isSocialMedia ? null : prev.textToSpeechFile,
 			// If NOT social media → clear canvas type
 			canvasType: isSocialMedia ? prev.canvasType || "instagram-post-4-5" : "",
 		}));
 	}, [formData.contentType]);
-
-	// console.log("Form Data : ", formData);
 
 	const steps = [
 		{ number: 1, title: "Details", component: StepOne },
@@ -51,7 +48,6 @@ const FormPrev = () => {
 		{ number: 4, title: "Checkout", component: StepFour },
 	];
 
-	// !validation  development stage
 	const canProceedToNextStep = () => {
 		switch (currentStep) {
 			case 1:
@@ -61,20 +57,7 @@ const FormPrev = () => {
 					formData.number !== ""
 				);
 			case 2:
-				// 	// For vertical video and AI avatar, require files
-				// if (
-				// 	formData.contentType === "Vertical video (reels, shorts, etc.)" ||
-				// 	formData.contentType === "AI avatar (reels, shorts, etc.)"
-				// ) {
-				// return formData.files.length > 0;
-				return true;
-			// }
-			// case 3:
-			// 	return formData.files.length > 0;
-			// case 4:
-			// 	return formData.files.length > 0;
-			// 	// For social media, allow proceeding without files
-			// 	return true;
+				return formData.files.length > 0;
 			default:
 				return true;
 		}
@@ -102,7 +85,7 @@ const FormPrev = () => {
 			);
 			return;
 		}
-		if (stepNumber > currentStep + 1) {
+		if (stepNumber > currentStep + 1 && formData.files.length === 0) {
 			setError("Please complete the previous step before proceeding.");
 			return;
 		}

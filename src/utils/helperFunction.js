@@ -46,6 +46,26 @@ export const createFormData = (formData) => {
 		data.append("files", formData.files[i]);
 	}
 
-	return data
+	return data;
+};
 
-}
+export const renderPrice = (formData) => {
+	let price = 0;
+	if (formData.contentType === "Social media post (post, story, etc.)") {
+		price = 299;
+	} else {
+		price = 1299;
+		if (formData.videoDuration === "90-seconds") {
+			price += 299;
+		} else if (formData.videoDuration === "120-seconds") {
+			price += 599;
+		} else {
+			price += 0;
+		}
+
+		if (formData.textToSpeech !== "no") {
+			price += 349;
+		}
+	}
+	return price;
+};

@@ -6,16 +6,15 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../components/ui/select";
-// import { Input } from "./ui/input";
+
 
 const StepOne = ({ formData, updateFormData, setError }) => {
+	
 	const contentTypes = [
 		"Social media post (post, story, etc.)",
 		"Vertical video (reels, shorts, etc.)",
 		// "AI avatar (reels, shorts, etc.)",
 	];
-
-	//Todo ->  rowos11660@ofular.com
 
 	return (
 		<motion.div
@@ -24,8 +23,6 @@ const StepOne = ({ formData, updateFormData, setError }) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-			{/* <p className="text-gray-500 text-sm">Please share your contact details</p> */}
-
 			<div className="space-y-4">
 				<div>
 					<label className="block text-sm font-medium text-gray-700 mb-2">

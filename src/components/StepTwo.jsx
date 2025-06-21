@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
-import { Upload, Image, Video, Check } from "lucide-react";
+import { Upload, Check } from "lucide-react";
 import { canvasTypeInfo, videoDurationInfo } from "@/utils/data";
 import { IoMdClose } from "react-icons/io";
 
@@ -214,8 +214,6 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-			{/* File upload updation -> https://originui.com/file-upload */}
-
 			{/* Upload Files */}
 			<div className="space-y-4">
 				<div>

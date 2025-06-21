@@ -70,7 +70,7 @@ const Navbar = () => {
 				>
 					<img
 						src="./logo.png"
-						alt="Tuzu Logo"
+						alt="Tuzu"
 						className="w-29 cursor-pointer"
 					/>
 				</Link>
