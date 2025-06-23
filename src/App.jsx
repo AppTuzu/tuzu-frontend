@@ -1,49 +1,53 @@
-import
- { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { ModelContext } from "./context/ModelContext";
 import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "motion/react";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsAndConditions from './pages/TermsAndConditions'
-import RefundAndCancellation from './pages/RefundAndCancellation'
-import Contact from "./pages/Contact";
-import Service from "./pages/Service";
-import NotFound from "./pages/NotFound";
-import Form from "./pages/Form";
-import Pricing from "./pages/Pricing";
+import { Suspense, lazy } from "react";
+import Loading from "./components/Loading";
+import GooglePlayLogo from "./assets/android-logo.png";
+import AppleStoreLogo from "./assets/apple-logo.png";
 
 const App = () => {
-  const { isModalOpen, toggleModal } = useContext(ModelContext);
+	const { isModalOpen, toggleModal } = useContext(ModelContext);
 
-  useEffect(() => {
-    isModalOpen
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isModalOpen]);
+	useEffect(() => {
+		isModalOpen
+			? (document.body.style.overflow = "hidden")
+			: (document.body.style.overflow = "auto");
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, [isModalOpen]);
 
-  //! Entry Animations
-  //! Mobile Responsive
+	//! Entry Animations
+	//! Mobile Responsive
+	//! edit index.html
 
-  return (
+	const Home = lazy(() => import("./pages/Home"));
+	const About = lazy(() => import("./pages/About"));
+	const Navbar = lazy(() => import("./components/Navbar"));
+	const Footer = lazy(() => import("./components/Footer"));
+	const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+	const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
+	const RefundAndCancellation = lazy(() =>
+		import("./pages/RefundAndCancellation")
+	);
+	const Contact = lazy(() => import("./pages/Contact"));
+	const Service = lazy(() => import("./pages/Service"));
+	const NotFound = lazy(() => import("./pages/NotFound"));
+	const Form = lazy(() => import("./pages/Form"));
+	const Pricing = lazy(() => import("./pages/Pricing"));
+
+	return (
 		<div className="font-poppins overflow-x-hidden selection:bg-themeYellow/60 selection:text-themeBlack">
-			<Navbar />
-
 			<AnimatePresence>
-				{/* modeal */}
 				{isModalOpen && (
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 w-full h-screen bg-themeBlue/7 z-50 px-8 backdrop-blur-[2px]"
+						className="fixed inset-0 w-full h-screen bg-themeBlue/7 z-60 px-8 backdrop-blur-[2px]"
 						onClick={toggleModal}
 					>
 						<motion.div
@@ -58,7 +62,9 @@ const App = () => {
 								onClick={toggleModal}
 								className="absolute right-5 top-4 text-3xl md:top-5 md:right-7 cursor-pointer hover:bg-zinc-600 rounded-full p-0.5 hover:scale-105"
 							/>
-							<h2 className="text-lg mt-4 md:text-2xl font-bold">We're working on it!</h2>
+							<h2 className="text-lg mt-4 md:text-2xl font-bold">
+								We're working on it!
+							</h2>
 							<p className="text-center font-light">
 								Your all-in-one content solution, we're building a platform to
 								meet all your social media content needs from editing to design
@@ -66,12 +72,14 @@ const App = () => {
 							</p>
 							<div className="flex gap-8 items-center justify-center">
 								<img
-									src="../src/assets/android-logo.png"
+									loading="lazy"
+									src={GooglePlayLogo}
 									alt="Google Play Store Logo"
 									className="w-24 sm:w-36"
 								/>
 								<img
-									src="../src/assets/apple-logo.png"
+									loading="lazy"
+									src={AppleStoreLogo}
 									alt="App Store Logo"
 									className="w-24 sm:w-36"
 								/>
@@ -81,22 +89,28 @@ const App = () => {
 				)}
 			</AnimatePresence>
 
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/service/:slug" element={<Service />} />
-				<Route path="/create" element={<Form />} />
-				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
-				<Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-				<Route
-					path="/refund-and-cancellation-policy"
-					element={<RefundAndCancellation />}
-				/>
-				<Route path="/contact-us" element={<Contact />} />
-				<Route path="/pricing" element={<Pricing />} />
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-			<Footer />
+			<Suspense fallback={<Loading />}>
+				<Navbar />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/service/:slug" element={<Service />} />
+					<Route path="/create" element={<Form />} />
+					<Route path="/privacy-policy" element={<PrivacyPolicy />} />
+					<Route
+						path="/terms-and-conditions"
+						element={<TermsAndConditions />}
+					/>
+					<Route
+						path="/refund-and-cancellation-policy"
+						element={<RefundAndCancellation />}
+					/>
+					<Route path="/contact-us" element={<Contact />} />
+					<Route path="/pricing" element={<Pricing />} />
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+				<Footer />
+			</Suspense>
 		</div>
 	);
 };

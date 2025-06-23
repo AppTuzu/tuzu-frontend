@@ -7,7 +7,7 @@ import StepThree from "@/components/StepThree";
 import StepFour from "@/components/StepFour";
 import axios from "axios";
 import { initialFormData } from "@/utils/data";
-import { createFormData, validateForm } from "@/utils/helperFunction";
+import { createFormData, renderPrice, validateForm } from "@/utils/helperFunction";
 import OrderConfirmation from "@/components/OrderConfirmation";
 import OrderLoading from "@/components/OrderLoading";
 
@@ -58,6 +58,8 @@ const FormPrev = () => {
 				);
 			case 2:
 				return formData.files.length > 0;
+			case 3:
+				return formData.description.trim() !== "";
 			default:
 				return true;
 		}
@@ -86,10 +88,34 @@ const FormPrev = () => {
 			return;
 		}
 		if (stepNumber > currentStep + 1 && formData.files.length === 0) {
-			setError("Please complete the previous step before proceeding.");
+			// setError("Please complete the previous step before proceeding.");
+			setError(
+				"Please upload atleast 1 file before proceeding to the next step."
+			);
 			return;
 		}
-		setError("");
+		if (
+			currentStep !== 1 &&
+			stepNumber > currentStep + 1 &&
+			formData.description.trim() === ""
+		) {
+			// setError("Please complete the previous step before proceeding.");
+			setError(
+				"Please provide a description for your file before proceeding to the next step."
+			);
+			return;
+		}
+		if (
+			stepNumber === 4 &&
+			(formData.files.length === 0 ||
+			formData.description.trim() === "")
+		) {
+			setError(
+				"Please fill the required details before proceeding to the next step."
+			);
+			return;
+		}
+			setError("");
 		setCurrentStep(stepNumber);
 	};
 
@@ -111,7 +137,8 @@ const FormPrev = () => {
 		}
 
 		setError("");
-		const data = createFormData(formData);
+		const price = renderPrice(formData)
+		const data = createFormData(formData, price);
 		console.log("Form Data for backend : ", data);
 		// for (const [key, value] of data.entries()) {
 		// 	console.log(`${key}:`, value);
@@ -133,14 +160,14 @@ const FormPrev = () => {
 				}
 			);
 			if (res.data.success) {
-				// setCurrentStep(1)
-				// setFormData(initialFormData)
-				// setAgreements({
-				// 	upfrontPayment: false,
-				// 	additionalUpgrades: false,
-				// 	termsConditions: false,
-				// 	privacyPolicy: false,
-				// });
+				setCurrentStep(1)
+				setFormData(initialFormData)
+				setAgreements({
+					upfrontPayment: false,
+					additionalUpgrades: false,
+					termsConditions: false,
+					privacyPolicy: false,
+				});
 				setOrderId(res.data.orderId);
 				setIsOrderCompleted(true);
 				console.info("Form submitted !!");

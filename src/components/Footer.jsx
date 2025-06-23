@@ -38,57 +38,71 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-themeBlack text-white w-full px-20 lg:px-32 xl:px-48 py-16 border-t border-t-themeBlue/20 flex flex-col md:flex-row justify-between gap-8">
-      <div className="flex flex-col gap-3">
-        {footer_links1.map((item, index) => (
-          <Link
-            to={item.link}
-            key={index}
-            className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
-          >
-            {item.title}
-          </Link>
-        ))}
-        <p className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]" onClick={toggleModal}>Our app</p>
-      </div>
+		<div className="bg-themeBlack text-white w-full px-20 lg:px-32 xl:px-48 py-16 border-t border-t-themeBlue/20 flex flex-col md:flex-row justify-between gap-8">
+			<div className="flex flex-col gap-3">
+				{footer_links1.map((item, index) => (
+					<Link
+						to={item.link}
+						key={index}
+						className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
+					>
+						{item.title}
+					</Link>
+				))}
+				<p
+					className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
+					onClick={toggleModal}
+				>
+					Our app
+				</p>
+			</div>
 
-      <div className="flex flex-col gap-3">
-        {footer_links2.map((item, index) => (
-          <Link
-            to={item.link}
-            key={index}
-            className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
-          >
-            {item.title}
-          </Link>
-        ))}
-      </div>
+			<div className="flex flex-col gap-3">
+				{footer_links2.map((item, index) => (
+					<Link
+						to={item.link}
+						key={index}
+						className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
+					>
+						{item.title}
+					</Link>
+				))}
+			</div>
 
-      <div className="flex flex-col w-32 gap-1">
-        <Link to="/">
-          <img
-            src="./logo.png"
-            alt="Tuzu Logo"
-            className="w-32 cursor-pointer"
-          />
-        </Link>
-        <div className="flex justify-between px-3">
-          <a href="#" onClick={(e) => e.preventDefault()} rel="noopener noreferrer">
+			<div className="flex flex-col w-32 gap-1">
+				<Link to="/">
+					<img
+						loading="lazy"
+						src="./logo.png"
+						alt="Tuzu Logo"
+						className="w-32 cursor-pointer"
+					/>
+				</Link>
+				<div className="flex justify-center gap-5 px-3">
+					{/* <a href="#" onClick={(e) => e.preventDefault()} rel="noopener noreferrer">
             <FaYoutube className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
-          </a>
-          <a href="https://www.linkedin.com/company/tuzu-app/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
-          </a>
-          <a href="https://www.instagram.com/tuzu_app/" target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
-          </a>
-          <a href="#" onClick={(e) => e.preventDefault()} rel="noopener noreferrer">
+          </a> */}
+					<a
+						href="https://www.instagram.com/tuzu_app/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FaInstagram className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
+					</a>
+					<a
+						href="https://www.linkedin.com/company/tuzu-app/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FaLinkedinIn className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
+					</a>
+					{/* <a href="#" onClick={(e) => e.preventDefault()} rel="noopener noreferrer">
             <FaXTwitter className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+          </a> */}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Footer;

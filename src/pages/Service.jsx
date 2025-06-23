@@ -13,7 +13,7 @@ const Service = () => {
 			{/* img conatainer */}
 			<div className="px-6 max-w-3xl mx-auto">
 				<div className=" mx-auto mb-10 rounded-xl max-w-3xl overflow-hidden h-44 md:h-52">
-					<img src={data.img} alt="" className="w-full h-full object-cover" />
+					<img loading="lazy" src={data.img} alt="" className="w-full h-full object-cover" />
 				</div>
 			</div>
 

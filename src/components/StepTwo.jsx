@@ -1,13 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { Label } from "../components/ui/label";
+import { Button } from "../components/ui/button";
 import { Textarea } from "../components/ui/textarea";
-import { Upload, Check } from "lucide-react";
+import { Upload, Check, X, Plus } from "lucide-react";
 import { canvasTypeInfo, videoDurationInfo } from "@/utils/data";
 import { IoMdClose } from "react-icons/io";
+import { Input } from "./ui/input";
 
 const StepTwo = ({ formData, updateFormData, setError }) => {
+	const [newInstruction, setNewInstruction] = useState("");
 	const fileInputRef = useRef(null);
 	const brandKitRef = useRef(null);
 	const textFileRef = useRef(null);
@@ -19,6 +22,22 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 			const fileArray = Array.from(files);
 			updateFormData({ files: [...formData.files, ...fileArray] });
 		}
+	};
+
+	const addInstruction = () => {
+		if (newInstruction.trim()) {
+			updateFormData({
+				instructions: [...formData.instructions, newInstruction.trim()],
+			});
+			setNewInstruction("");
+		}
+	};
+
+	const removeInstruction = (index) => {
+		const updatedInstructions = formData.instructions.filter(
+			(_, i) => i !== index
+		);
+		updateFormData({ instructions: updatedInstructions });
 	};
 
 	const handleBrandKitUpload = (files) => {
@@ -214,7 +233,7 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 			transition={{ duration: 0.5 }}
 			className="space-y-6"
 		>
-			{/* Upload Files */}
+			{/* Upload Files & brand kit */}
 			<div className="space-y-4">
 				<div>
 					<label className="block text-sm font-medium text-gray-700 mb-3">
@@ -235,6 +254,7 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 									>
 										{isImage ? (
 											<img
+												loading="lazy"
 												src={url}
 												alt={file.name}
 												className="object-cover w-full h-full"
@@ -306,6 +326,69 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 							}
 						}}
 					/>
+				</div>
+
+				{/* Add Instructions */}
+				<div className="space-y-3">
+					<label className="block text-sm font-medium text-gray-700">
+						Add instructions
+					</label>
+
+					<div className="space-y-3">
+						{formData.instructions.map((instruction, index) => (
+							<motion.div
+								key={index}
+								initial={{ opacity: 0, x: -20 }}
+								animate={{ opacity: 1, x: 0 }}
+								className="flex items-center space-x-2 p-3 border border-yellow-200 rounded-lg bg-yellow-50"
+							>
+								<span className="flex-1 text-sm">{instruction}</span>
+								<Button
+									variant="ghost"
+									size="sm"
+									onClick={() => removeInstruction(index)}
+									className="h-6 w-6 p-0 hover:bg-red-100"
+								>
+									<X className="h-3 w-3 text-red-500" />
+								</Button>
+							</motion.div>
+						))}
+
+						<div className="flex space-x-2">
+							<Input
+								placeholder="Add bike image in that transition"
+								value={newInstruction}
+								onChange={(e) => setNewInstruction(e.target.value)}
+								className="border-yellow-200 focus:border-yellow-400 placeholder:text-sm"
+								onKeyPress={(e) => e.key === "Enter" && addInstruction()}
+							/>
+							<motion.div
+								whileHover={{ scale: 1.02 }}
+								whileTap={{ scale: 0.98 }}
+							>
+								<Button
+									onClick={addInstruction}
+									variant="outline"
+									className="border-themeYellow text-yellow-400 hover:bg-yellow-50 hover:text-yellow-600"
+								>
+									<span className="hidden sm:block">Add</span>
+									<Plus className="h-4 w-4" />
+								</Button>
+							</motion.div>
+						</div>
+
+						{formData.instructions.length > 0 && (
+							<motion.button
+								whileHover={{ scale: 1.02 }}
+								whileTap={{ scale: 0.98 }}
+								className="text-cyan-500 text-sm font-medium hover:text-cyan-600 flex items-center"
+								onClick={addInstruction}
+							>
+								<Plus className="h-4 w-4 mr-1" />
+								Add another note
+							</motion.button>
+						)}
+					</div>
 				</div>
 
 				{/* Brand Kit Upload */}

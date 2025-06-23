@@ -7,15 +7,17 @@ export const validateForm = (formData) => {
 	if (!formData.contentType) return "Content type is required";
 	if (!formData.files || formData.files.length === 0)
 		return "At least one file is required";
-
+	if (!formData.description) return "Description is required";
 	return null;
 };
 
-export const createFormData = (formData) => {
+export const createFormData = (formData, price) => {
 	const data = new FormData();
 	data.append("email", formData.email);
 	data.append("number", formData.number);
 	data.append("contentType", formData.contentType);
+	data.append("description", formData.description);
+	data.append("price", price);
 	data.append("canvasType", formData.canvasType);
 	data.append("videoDuration", formData.videoDuration);
 	data.append("language", formData.language);
@@ -64,7 +66,15 @@ export const renderPrice = (formData) => {
 		}
 
 		if (formData.textToSpeech !== "no") {
-			price += 349;
+			if (formData.videoDuration === "60-seconds") {
+				price += 499;
+			} else if (formData.videoDuration === "90-seconds") {
+				price += 649;
+			} else if (formData.videoDuration === "120-seconds") {
+				price += 799;
+			} else {
+				price += 349;
+			}
 		}
 	}
 	return price;

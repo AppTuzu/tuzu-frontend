@@ -3,7 +3,7 @@ import { Checkbox } from "../components/ui/checkbox";
 import { Check } from "lucide-react";
 import { renderPrice } from "@/utils/helperFunction";
 
-const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
+const StepFour = ({ formData, agreements, setAgreements }) => {
 
 	const handleAgreementChange = (key, checked) => {
 		setAgreements({ ...agreements, [key]: checked });
@@ -200,25 +200,7 @@ const StepFour = ({ formData, updateFormData, agreements, setAgreements }) => {
 					<li>• Links: {formData.relatedLinks.length} provided</li>
 				</ul>
 			</motion.div>
-
-			{/* Checkout Button */}
-			{/* <motion.div
-				initial={{ opacity: 0, scale: 0.95 }}
-				animate={{ opacity: 1, scale: 1 }}
-				transition={{ delay: 0.8 }}
-				className="pt-4"
-			>
-				<Button
-					disabled={!allAgreed}
-					className={`w-full py-3 text-lg font-medium transition-all ${
-						allAgreed
-							? "bg-yellow-400 hover:bg-yellow-500 text-black"
-							: "bg-gray-200 text-gray-400 cursor-not-allowed"
-					}`}
-				>
-					{allAgreed ? "Checkout" : "Please accept all terms to continue"}
-				</Button>
-			</motion.div> */}
+			
 		</motion.div>
 	);
 };

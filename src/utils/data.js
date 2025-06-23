@@ -1,3 +1,6 @@
+import SocailMediaImg from "../assets/social-media.png";
+import VerticalVideoImg from "../assets/vertical-video.png";
+
 export const servicePageInfo = [
 	{
 		id: 1,
@@ -5,14 +8,14 @@ export const servicePageInfo = [
 		title: "Social media post",
 		description:
 			"Professionally designed graphics and images tailored for platforms like Instagram, Facebook, and more.",
-		img: "../src/assets/social-media.png",
+		img: SocailMediaImg,
 		includes: [
 			"High quality image editing.",
 			"Optimized for social media platforms.",
 			"One free revision.",
 		],
 		// upgrades: ["Custom graphics and animations.", "Advanced photo retouching."],
-		ctaImg: "../src/assets/social-media.png",
+		ctaImg: SocailMediaImg,
 	},
 	{
 		id: 2,
@@ -20,7 +23,7 @@ export const servicePageInfo = [
 		title: "Vertical video",
 		description:
 			"High quality vertical videos for Reels, Shorts, and more with add-ons like text-to-speech voiceovers or AI/Deepfake avatars for added impact",
-		img: "../src/assets/vertical-video.png",
+		img: VerticalVideoImg,
 		includes: [
 			"Optimized vertical video format.",
 			"Smooth cuts, transitions, and effects.",
@@ -33,7 +36,7 @@ export const servicePageInfo = [
 			// "Custom animations, transitions and effects.",
 			// "Additional cost for longer video durations",
 		],
-		ctaImg: "../src/assets/vertical-video.png",
+		ctaImg: VerticalVideoImg,
 	},
 ];
 
@@ -186,6 +189,7 @@ export const initialFormData = {
 	number: "",
 	contentType: "Social media post (post, story, etc.)",
 	files: [],
+	description: '',
 	brandKit: null,
 	canvasType: "instagram-post-4-5",
 	videoDuration: "30-seconds",

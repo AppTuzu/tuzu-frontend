@@ -14,8 +14,13 @@ const HeroSection = () => {
 						<span className="text-themeYellow italic text-3xl md:text-4xl font-medium">
 							Welcome to
 						</span>
-						<img src="./logo.png" alt="TUZU Logo" className="w-26" />- Your
-						One-Stop
+						<img
+							loading="lazy"
+							src="./logo.png"
+							alt="TUZU Logo"
+							className="w-26"
+						/>
+						- Your One-Stop
 					</h1>
 					<h1 className="text-white text-3xl lg:text-4xl font-medium mb-1">
 						Destination for Social Media Content Editing!
@@ -32,7 +37,10 @@ const HeroSection = () => {
 						marketing agency looking to make a splash on social media,{" "}
 						<span className="font-semibold">we've got you covered.</span>
 					</h3>
-					<Button onClick={() => navigate('/create')} title={"Create with us"} />
+					<Button
+						onClick={() => navigate("/create")}
+						title={"Create with us"}
+					/>
 				</div>
 			</div>
 		</div>

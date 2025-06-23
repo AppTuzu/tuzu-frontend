@@ -2,6 +2,7 @@ import OurApp from "../components/OurApp";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaEnvelope } from "react-icons/fa";
 import FAQ from "@/components/FAQ";
+import SocialMediaImg from "../assets/social-media.png";
 
 
 const About = () => {
@@ -11,7 +12,8 @@ const About = () => {
 				{/* image */}
 				<div className="w-[80%] mt-32 mb-16 rounded-xl max-w-3xl overflow-hidden h-40 md:h-52">
 					<img
-						src="../src/assets/social-media.png"
+						loading="lazy"
+						src={SocialMediaImg}
 						alt=""
 						className="w-full h-full object-cover"
 					/>
@@ -120,8 +122,18 @@ const About = () => {
 					<h3 className="text-lg md:text-3xl font-semibold">Contact us</h3>
 				</div>
 				<div className="flex flex-col gap-3 items-center justify-center">
-					<Button icon={<IoLogoWhatsapp />} title={"Chat with us"} />
-					<Button icon={<FaEnvelope />} title={"Write to us"} />
+					<Button
+						href={"https://wa.me/917012175266"}
+						icon={<IoLogoWhatsapp />}
+						title={"Chat with us"}
+					/>
+					<Button
+						href={
+							"mailto:apptuzu@gmail.com?subject=Support%20Request"
+						}
+						icon={<FaEnvelope />}
+						title={"Write to us"}
+					/>
 				</div>
 			</div>
 
@@ -130,12 +142,12 @@ const About = () => {
 	);
 };
 
-const Button = ({ icon, title }) => {
+const Button = ({ icon, title, href }) => {
 	return (
-		<button className="bg-themeYellow text-black w-54 md:w-64 px-8 py-2 md:py-3 text-lg rounded-lg justify-center flex items-center gap-3 font-semibold cursor-pointer hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30 active:scale-99 transition-all duration-300">
+		<a href={href} target="_blank" className="bg-themeYellow text-black w-54 md:w-64 px-8 py-2 md:py-3 text-lg rounded-lg justify-center flex items-center gap-3 font-semibold cursor-pointer hover:scale-[102%] hover:shadow-lg shadow-themeYellow/30 active:scale-99 transition-all duration-300">
 			{icon}
 			{title}
-		</button>
+		</a>
 	);
 };
 
