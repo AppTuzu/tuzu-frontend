@@ -85,6 +85,7 @@ const Footer = () => {
 					<a
 						href="https://www.instagram.com/tuzu_app/"
 						target="_blank"
+						aria-label="Follow us on Instagram"
 						rel="noopener noreferrer"
 					>
 						<FaInstagram className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
@@ -92,6 +93,7 @@ const Footer = () => {
 					<a
 						href="https://www.linkedin.com/company/tuzu-app/"
 						target="_blank"
+						aria-label="Follow us on Linkedin"
 						rel="noopener noreferrer"
 					>
 						<FaLinkedinIn className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />

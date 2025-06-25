@@ -20,7 +20,7 @@ const HeroSection = () => {
 							alt="TUZU Logo"
 							className="w-26"
 						/>
-						- Your One-Stop
+						- Your One - Stop
 					</h1>
 					<h1 className="text-white text-3xl lg:text-4xl font-medium mb-1">
 						Destination for Social Media Content Editing!
@@ -32,11 +32,11 @@ const HeroSection = () => {
 				</div>
 				<div className="bg-linear-to-b from-themeBlue/15 via-[#737373]/15 to-themeBlack/15 w-full md:w-[75%] lg:w-[70%] xl:w-[50%] flex flex-col items-center justify-center px-8 py-8 rounded-3xl text-center gap-8">
 					{/* center box */}
-					<h3 className="text-xl md:text-2xl text-white font-light">
+					<h2 className="text-xl md:text-2xl text-white font-light">
 						Whether you're a budding influencer, a small business owner, or a
 						marketing agency looking to make a splash on social media,{" "}
 						<span className="font-semibold">we've got you covered.</span>
-					</h3>
+					</h2>
 					<Button
 						onClick={() => navigate("/create")}
 						title={"Create with us"}

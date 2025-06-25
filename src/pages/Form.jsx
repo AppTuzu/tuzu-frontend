@@ -26,6 +26,9 @@ const FormPrev = () => {
 	const [loading, setLoading] = useState(false);
 	const [uploadProgress, setUploadProgress] = useState(0);
 
+	// console.log(import.meta.env.VITE_BACKEND_URL);
+	
+
 	useEffect(() => {
 		const isSocialMedia =
 			formData.contentType === "Social media post (post, story, etc.)";
@@ -147,7 +150,7 @@ const FormPrev = () => {
 		try {
 			setLoading(true);
 			const res = await axios.post(
-				`${import.meta.env.VITE_BACKEND_URL}/api/form`,
+				'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
 				data,
 				{
 					headers: { "Content-Type": "multipart/form-data" },
