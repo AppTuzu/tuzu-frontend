@@ -38,6 +38,7 @@ const App = () => {
 	const NotFound = lazy(() => import("./pages/NotFound"));
 	const Form = lazy(() => import("./pages/Form"));
 	const Pricing = lazy(() => import("./pages/Pricing"));
+	const Download = lazy(() => import("./pages/Download"));
 
 	return (
 		<div className="font-poppins overflow-x-hidden selection:bg-themeYellow/60 selection:text-themeBlack">
@@ -107,6 +108,7 @@ const App = () => {
 					/>
 					<Route path="/contact-us" element={<Contact />} />
 					<Route path="/pricing" element={<Pricing />} />
+					<Route path="/download" element={<Download />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 				<Footer />

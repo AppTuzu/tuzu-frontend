@@ -45,6 +45,7 @@ const OrderLoading = ({ uploadProgress, isOrderCompleted }) => {
 					</motion.div>
 				</div>
 				<div className="text-gray-700 text-sm mt-9 text-center">
+					{uploadProgress === 0 && <p>Verifying Payment</p>}
 					{uploadProgress < 100 ? (
 						<span>Uploading your files, please wait...</span>
 					) : !isOrderCompleted ? (

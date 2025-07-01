@@ -11,13 +11,15 @@ export const validateForm = (formData) => {
 	return null;
 };
 
-export const createFormData = (formData, price) => {
+export const createFormData = (formData, price, response) => {
 	const data = new FormData();
 	data.append("email", formData.email);
 	data.append("number", formData.number);
 	data.append("contentType", formData.contentType);
 	data.append("description", formData.description);
 	data.append("price", price);
+	data.append("razorpayOrderId", response.razorpay_order_id);
+	data.append("razorpayPaymentId", response.razorpay_payment_id);
 	data.append("canvasType", formData.canvasType);
 	data.append("videoDuration", formData.videoDuration);
 	data.append("language", formData.language);

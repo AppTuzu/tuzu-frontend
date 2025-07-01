@@ -39,7 +39,6 @@ const StepOne = ({ formData, updateFormData, setError }) => {
 						}}
 						type="email"
 						required
-						pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 						onChange={(e) => updateFormData({ email: e.target.value })}
 						placeholder="Enter your email address"
 						className="text-black placeholder:text-[13px] placeholder:text-slate-400 border-2 border-yellow-200 w-full px-3 py-1.5 rounded-lg focus-visible:ring-4 focus-visible:ring-themeYellow"

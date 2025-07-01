@@ -141,46 +141,106 @@ const FormPrev = () => {
 
 		setError("");
 		const price = renderPrice(formData)
-		const data = createFormData(formData, price);
-		console.log("Form Data for backend : ", data);
 		// for (const [key, value] of data.entries()) {
 		// 	console.log(`${key}:`, value);
 		// }
 
 		try {
-			setLoading(true);
-			const res = await axios.post(
-				'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
-				data,
-				{
-					headers: { "Content-Type": "multipart/form-data" },
-					onUploadProgress: (progressEvent) => {
-						const percent = Math.round(
-							(progressEvent.loaded * 100) / progressEvent.total
+
+			const orderRes = await axios.post("http://localhost:8080/create-order", {
+				amount: price,
+				currency: "INR",
+			});
+
+			const options = {
+				key: "rzp_test_8M04xY5DcVQIPO",
+				amount: orderRes.data.amount,
+				currency: orderRes.data.currency,
+				name: "Tuzu",
+				description: "Content Upload",
+				image: "https://tuzuapp.com/logo.png",
+				order_id: orderRes.data.id,
+				prefill: {
+					email: formData.email,
+					contact: formData.number,
+				},
+				
+				handler: async function (response) {
+					console.log("payment res - ", response);
+
+					try {
+						// 2. Verify Signature
+						const verifyRes = await axios.post("http://localhost:8080/verify", {
+							razorpay_order_id: response.razorpay_order_id,
+							razorpay_payment_id: response.razorpay_payment_id,
+							razorpay_signature: response.razorpay_signature,
+						});
+
+						
+						if (verifyRes.data.status === "success") {
+							// 3. Proceed to upload file
+							const data = createFormData(
+								formData,
+								price,
+								response
+							);
+							console.log("Form Data for backend : ", data);
+							setLoading(true);
+							const res = await axios.post(
+								// 'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
+								"http://localhost:8080/api/form",
+								data,
+								{
+									headers: { "Content-Type": "multipart/form-data" },
+									onUploadProgress: (progressEvent) => {
+										const percent = Math.round(
+											(progressEvent.loaded * 100) / progressEvent.total
+										);
+										setUploadProgress(percent);
+									},
+								}
+							);
+							if (res.data.success) {
+								setCurrentStep(1);
+								setFormData(initialFormData);
+								setAgreements({
+									upfrontPayment: false,
+									additionalUpgrades: false,
+									termsConditions: false,
+									privacyPolicy: false,
+								});
+								setOrderId(res.data.orderId);
+								setIsOrderCompleted(true);
+								console.info("Form submitted !!");
+								console.log("Response : ", res.data);
+							} else {
+								setError("Failed to upload files. Please try again.");
+							}
+						} else {
+							setError("Payment verification failed.");
+						}
+					} catch (err) {
+						console.error("Error:", err);
+						setError(
+							"Something went wrong during verification/upload. Please try again."
 						);
-						setUploadProgress(percent);
-					},
-				}
-			);
-			if (res.data.success) {
-				setCurrentStep(1)
-				setFormData(initialFormData)
-				setAgreements({
-					upfrontPayment: false,
-					additionalUpgrades: false,
-					termsConditions: false,
-					privacyPolicy: false,
-				});
-				setOrderId(res.data.orderId);
-				setIsOrderCompleted(true);
-				console.info("Form submitted !!");
-				console.log("Response : ", res.data);
-			} else {
-				setError("Failed to upload files. Please try again.");
-			}
+					}
+				},
+				theme: {
+					color: "#3399cc",
+				},
+			};
+
+			const rzp = new window.Razorpay(options);
+			rzp.open();
+			rzp.on("payment.failed", function (response) {
+				console.error("Payment Failed:", response);
+				setError("Payment failed. Please try again.");
+			});
+
 		} catch (error) {
 			console.error("Upload Failed", error);
-			setError("Failed to upload files. Please try again.");
+			setError("Payment initialization failed. Please try again.");
 		} finally {
 			setLoading(false);
 			setUploadProgress(0);
