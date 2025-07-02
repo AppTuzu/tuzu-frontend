@@ -1,43 +1,42 @@
 import { useContext } from "react";
-import { FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ModelContext } from "../context/ModelContext";
+import { motion } from "motion/react";
 
 const Footer = () => {
+	const { toggleModal } = useContext(ModelContext);
 
-  const { toggleModal } = useContext(ModelContext);
+	const footer_links1 = [
+		{
+			title: "About us",
+			link: "/about",
+		},
+		{
+			title: "Contact us",
+			link: "/contact-us",
+		},
+		{
+			title: "Pricing",
+			link: "/pricing",
+		},
+	];
+	const footer_links2 = [
+		{
+			title: "Privacy policy",
+			link: "/privacy-policy",
+		},
+		{
+			title: "Terms and conditions",
+			link: "/terms-and-conditions",
+		},
+		{
+			title: "Refund and cancellation policy",
+			link: "/refund-and-cancellation-policy",
+		},
+	];
 
-  const footer_links1 = [
-    {
-      title: "About us",
-      link: "/about",
-    },
-    {
-      title: "Contact us",
-      link: "/contact-us",
-    },
-    {
-      title: "Pricing",
-      link: "/pricing",
-    },
-  ];
-  const footer_links2 = [
-    {
-      title: "Privacy policy",
-      link: "/privacy-policy",
-    },
-    {
-      title: "Terms and conditions",
-      link: "/terms-and-conditions",
-    },
-    {
-      title: "Refund and cancellation policy",
-      link: "/refund-and-cancellation-policy",
-    },
-  ];
-
-  return (
+	return (
 		<div className="bg-themeBlack text-white w-full px-20 lg:px-32 xl:px-48 py-16 border-t border-t-themeBlue/20 flex flex-col md:flex-row justify-between gap-8">
 			<div className="flex flex-col gap-3">
 				{footer_links1.map((item, index) => (
@@ -46,15 +45,24 @@ const Footer = () => {
 						key={index}
 						className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
 					>
-						{item.title}
+						<motion.span
+							initial={{ opacity: 0, filter: "blur(5px)" }}
+							whileInView={{ opacity: 1, filter: "blur(0px)" }}
+							transition={{ duration: 0.3, delay: index * 0.1 }}
+						>
+							{item.title}
+						</motion.span>
 					</Link>
 				))}
-				<p
+				<motion.p
+					initial={{ opacity: 0, filter: "blur(5px)" }}
+					whileInView={{ opacity: 1, filter: "blur(0px)" }}
+					transition={{ duration: 0.3, delay: 0.4 }}
 					className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
 					onClick={toggleModal}
 				>
 					Our app
-				</p>
+				</motion.p>
 			</div>
 
 			<div className="flex flex-col gap-3">
@@ -64,12 +72,23 @@ const Footer = () => {
 						key={index}
 						className="cursor-pointer transition-all duration-200 hover:text-[#81b5be] pl-2 md:pl-0 hover:scale-[102%]"
 					>
-						{item.title}
+						<motion.span
+							initial={{ opacity: 0, filter: "blur(5px)" }}
+							whileInView={{ opacity: 1, filter: "blur(0px)" }}
+							transition={{ duration: 0.3, delay: index * 0.1 }}
+						>
+							{item.title}
+						</motion.span>
 					</Link>
 				))}
 			</div>
 
-			<div className="flex flex-col w-32 gap-1">
+			<motion.div
+				initial={{ opacity: 0, y: 0 }}
+				whileInView={{ opacity: 1, y: 10 }}
+				transition={{ duration: 0.3, delay: 0.4 }}
+				className="flex flex-col w-32 gap-1"
+			>
 				<Link to="/">
 					<img
 						loading="lazy"
@@ -102,7 +121,7 @@ const Footer = () => {
             <FaXTwitter className="transition-all duration-200 cursor-pointer hover:text-[#81b5be]" />
           </a> */}
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 };

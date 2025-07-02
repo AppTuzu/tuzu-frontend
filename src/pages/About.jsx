@@ -3,6 +3,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FaEnvelope } from "react-icons/fa";
 import FAQ from "@/components/FAQ";
 import SocialMediaImg from "../assets/social-media.png";
+import {motion} from 'motion/react'
 
 
 const About = () => {
@@ -10,14 +11,19 @@ const About = () => {
 		<div className="bg-themeBlack">
 			<div className="flex flex-col items-center justify-center">
 				{/* image */}
-				<div className="w-[80%] mt-32 mb-16 rounded-xl max-w-3xl overflow-hidden h-40 md:h-52">
+				<motion.div
+					initial={{ opacity: 0, filter: "blur(5px)" }}
+					whileInView={{ opacity: 1, filter: "blur(0px)" }}
+					viewport={{ once: true }}
+					className="w-[80%] mt-32 mb-16 rounded-xl max-w-3xl overflow-hidden h-40 md:h-52"
+				>
 					<img
 						loading="lazy"
 						src={SocialMediaImg}
 						alt=""
 						className="w-full h-full object-cover"
 					/>
-				</div>
+				</motion.div>
 				{/* about */}
 				<div
 					className="text-center w-full flex flex-col justify-center gap-5 md:gap-8 items-center text-white py-14 px-7 sm:px-12 md:px-16 "
@@ -26,8 +32,22 @@ const About = () => {
 							"radial-gradient(circle, rgba(32,32,32,0.15) 0%, rgba(115,115,115,0.15) 50%, rgba(12,192,223,0.15) 100%)",
 					}}
 				>
-					<h1 className="font-bold text-3xl md:text-5xl">Who are we</h1>
-					<div className="space-y-3 md:space-y-5">
+					<motion.h1
+						initial={{ opacity: 0, y: 0 }}
+						whileInView={{ opacity: 1, y: -15 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.1 }}
+						className="font-bold text-3xl md:text-5xl"
+					>
+						Who are we
+					</motion.h1>
+					<motion.div
+						initial={{ opacity: 0, filter: "blur(5px)" }}
+						whileInView={{ opacity: 1, filter: "blur(0px)" }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.1 }}
+						className="space-y-3 md:space-y-5"
+					>
 						<p className="text-base md:text-xl max-w-4xl">
 							We are Tuzu, your go-to platform for social media content creation
 						</p>
@@ -42,13 +62,19 @@ const About = () => {
 							With Tuzu, you can focus on what matters most: connecting with
 							your audience and growing your brand
 						</p>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 
 			{/* missions */}
 			<div className="w-full py-14 border-b border-b-themeBlue/20 px-7 sm:px-12 md:px-16 text-white [background-size:50px_50px] [background-image:linear-gradient(to_right,#18181b_4px,transparent_4px),linear-gradient(to_bottom,#18181b_4px,transparent_4px)]">
-				<div className="overflow-hidden w-full relative max-w-2xl mx-auto p-10  border-1 rounded-2xl border-themeYellow/40 bg-themeBlack">
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					transition={{ delay: 0.2 }}
+					viewport={{ once: true }}
+					className="overflow-hidden w-full relative max-w-2xl mx-auto p-10  border-1 rounded-2xl border-themeYellow/40 bg-themeBlack"
+				>
 					<div
 						className="absolute inset-0 z-10"
 						style={{
@@ -74,13 +100,25 @@ const About = () => {
 							</p>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
 				<div className="w-full max-w-4xl mx-auto mt-16">
-					<h2 className="font-bold text-xl md:text-2xl text-center mb-5">
+					<motion.h2
+						initial={{ opacity: 0, y: 15 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.2 }}
+						viewport={{ once: true }}
+						className="font-bold text-xl md:text-2xl text-center mb-5"
+					>
 						Why choose Tuzu?
-					</h2>
-					<div className="text-base md:text-lg">
+					</motion.h2>
+					<motion.div
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ delay: 0.2 }}
+						viewport={{ once: true }}
+						className="text-base md:text-lg"
+					>
 						<p>
 							Choosing Tuzu means choosing simplicity, quality, and results.{" "}
 							<br />
@@ -107,7 +145,7 @@ const About = () => {
 						<p className="mt-5">
 							With Tuzu, creating impactful content has never been easier!
 						</p>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 
@@ -128,9 +166,7 @@ const About = () => {
 						title={"Chat with us"}
 					/>
 					<Button
-						href={
-							"mailto:apptuzu@gmail.com?subject=Support%20Request"
-						}
+						href={"mailto:apptuzu@gmail.com?subject=Support%20Request"}
 						icon={<FaEnvelope />}
 						title={"Write to us"}
 					/>

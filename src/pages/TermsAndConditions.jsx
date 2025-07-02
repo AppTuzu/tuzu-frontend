@@ -1,76 +1,78 @@
+import { Link } from "react-router-dom";
 import PageTemplate from "../components/PageTemplate";
 
 const TermsAndConditions = () => {
 
   const data = {
-    title: "Terms and Conditions",
-    description:
-      'Welcome to Tuzu, these terms and conditions ("Terms") govern your use of our website and services. By accessing or using Tuzu’s services, you agree to comply with and be bound by these Terms. Please read them carefully.',
-    content: [
-      {
-        id: 1,
-        title: "Acceptance of Terms",
-        description:
-          "By using Tuzu, you agree to be bound by these Terms and any applicable laws and regulations. If you do not agree with these Terms, you must discontinue use of our services immediately.",
-      },
-      {
-        id: 2,
-        title: "Services",
-        description:
-          "Tuzu provides social media content editing and creation services. Our services are delivered primarily through the information you submit via Google Forms. We reserve the right to modify, suspend, or discontinue any aspect of our services at any time without notice.",
-      },
-      {
-        id: 3,
-        title: "User Responsibilities",
-        description:
-          "You must provide accurate, current, and complete information when submitting requests through our Google Forms. You are responsible for ensuring that the content you submit does not infringe on any third-party rights, including intellectual property rights. You agree not to use Tuzu’s services for any unlawful or prohibited activities",
-      },
-      {
-        id: 4,
-        title: "Payments",
-        description:
-          "All payments for Tuzu’s services must be made in accordance with the prices specified on our website or as communicated to you. Once payment is made, it is non-refundable except as provided in our Refund and Cancellation Policy.",
-      },
-      {
-        id: 5,
-        title: "Intellectual Property",
-        description:
-          "All content, including text, graphics, logos, and software, used on the Tuzu website is the property of Tuzu and is protected by copyright and other intellectual property laws. You may not use, reproduce, or distribute any content from Tuzu without our explicit written permission.",
-      },
-      {
-        id: 6,
-        title: "Privacy",
-        description:
-          "Your use of Tuzu’s services is also governed by our Privacy Policy. By using our services, you agree to the collection and use of your information as described in our Privacy Policy.",
-      },
-      {
-        id: 7,
-        title: "Limitation of Liability",
-        description:
-          "Tuzu is not liable for any indirect, incidental, special, or consequential damages arising from your use of our services. Our total liability to you for any claim related to the use of our services is limited to the amount paid by you for the service in question.",
-      },
-      {
-        id: 8,
-        title: "Indemnification",
-        description:
-          "You agree to indemnify and hold Tuzu, its employees, and affiliates harmless from any claims, damages, losses, or expenses arising out of your use of our services or your violation of these Terms.",
-      },
-      {
-        id: 9,
-        title: "Changes to Terms",
-        description:
-          "Tuzu reserves the right to change these Terms at any time. Any changes will be posted on this page with an updated effective date. Continued use of our services after any changes indicates your acceptance of the new Terms.",
-      },
-      {
-        id: 10,
-        title: "Contact Us",
-        description:
-          "If you have any questions about these Terms, please contact us at: apptuzu@gmail.com",
-      },
-    ],
-    endNote:
-      "By using Tuzu’s services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. Thank you for choosing Tuzu.",
-  };
+		title: "Terms and Conditions",
+		description:
+			"At Tuzu Media Technologies Private Limited, we aim to provide a smooth and professional experience. These Terms & Conditions outline the rules and expectations when you use our website or services. By using our services, you agree to these terms.",
+		content: [
+			{
+				id: 1,
+				title: "Use of Services",
+				description: "By using our website or submitting a request, you agree to provide accurate information and use our services only for lawful purposes. We reserve the right to refuse service if any misuse or suspicious activity is detected.",
+			},
+			{
+				id: 2,
+				title: "Service Process",
+				description: "We offer content editing and creative services based on the information and materials you submit through our website forms. Your content will be reviewed, edited, and delivered as per the type of service selected. Timelines and delivery depend on the project scope.",
+			},
+			{
+				id: 3,
+				title: "Payments",
+				description: "All services are prepaid. Once you submit your request and complete payment through our trusted third-party gateway, we begin processing your project. Pricing may change over time and is clearly stated at the point of request.",
+			},
+			{
+				id: 4,
+				title: "Revisions & Refunds",
+				description: "We allow limited revisions depending on the service. Refunds are not guaranteed and are considered only in rare cases where the service could not be fulfilled due to internal errors or technical issues. We encourage you to review your input before submitting a request",
+			},
+			{
+				id: 5,
+				title: "Ownership & Rights",
+				description: "You retain full ownership of the original content you submit. After the editing is completed and payment is made, the final content delivered is also fully yours. We do not use or share your content beyond your project unless you give us explicit permission.",
+			},
+			{
+				id: 6,
+				title: "Conduct & Content Guidelines",
+				description: "You must not upload or submit content that is illegal, offensive, harmful, or infringes on anyone’s rights. If such content is detected, we reserve the right to reject your request without a refund",
+			},
+			{
+				id: 7,
+				title: "Service Availability",
+				description: "We strive to keep our platform running smoothly. However, we are not responsible for delays or failures caused by technical issues, internet outages, or external platform dependencies.",
+			},
+			{
+				id: 8,
+				title: "Changes to These Terms",
+				description: "We may update these Terms & Conditions as our services evolve. The latest version will always be available on this page with the updated effective date.",
+			},
+			{
+				id: 9,
+				title: "Governing Law",
+				description: "These terms are governed by the laws of India. Any disputes will be subject to the jurisdiction of courts in [Bengaluru, Karnataka].",
+			},
+			{
+				id: 10,
+				title: "Contact Us",
+				description: (
+					<>
+						For any questions or concerns about these terms, feel free to{" "}
+						<span>
+							<Link to="/contact-us" className="text-themeBlue hover:underline">
+								Contact us
+							</Link>
+						</span>{" "}
+						<br />
+						Tuzu Media Technologies Private Limited.
+					</>
+				),
+			},
+		],
+		endNote:
+			"By using Tuzu’s services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. Thank you for choosing Tuzu.",
+	};
 
   return (
     <div className="bg-themeBlack text-white px-10 sm:px-14 md:px-22 lg:px-28 py-28 flex items-center justify-center">

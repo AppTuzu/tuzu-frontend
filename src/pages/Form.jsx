@@ -27,7 +27,6 @@ const FormPrev = () => {
 	const [uploadProgress, setUploadProgress] = useState(0);
 
 	// console.log(import.meta.env.VITE_BACKEND_URL);
-	
 
 	useEffect(() => {
 		const isSocialMedia =
@@ -147,7 +146,10 @@ const FormPrev = () => {
 
 		try {
 
-			const orderRes = await axios.post("http://localhost:8080/create-order", {
+			const orderRes = await axios.post(
+				// "http://localhost:8080/create-order"
+				"https://tuzu-backend-785068118363.asia-south1.run.app/create-order"
+				, {
 				amount: price,
 				currency: "INR",
 			});
@@ -170,11 +172,15 @@ const FormPrev = () => {
 
 					try {
 						// 2. Verify Signature
-						const verifyRes = await axios.post("http://localhost:8080/verify", {
-							razorpay_order_id: response.razorpay_order_id,
-							razorpay_payment_id: response.razorpay_payment_id,
-							razorpay_signature: response.razorpay_signature,
-						});
+						const verifyRes = await axios.post(
+							// "http://localhost:8080/verify"
+							"https://tuzu-backend-785068118363.asia-south1.run.app/verify",
+							{
+								razorpay_order_id: response.razorpay_order_id,
+								razorpay_payment_id: response.razorpay_payment_id,
+								razorpay_signature: response.razorpay_signature,
+							}
+						);
 
 						
 						if (verifyRes.data.status === "success") {
@@ -187,8 +193,8 @@ const FormPrev = () => {
 							console.log("Form Data for backend : ", data);
 							setLoading(true);
 							const res = await axios.post(
-								// 'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
-								"http://localhost:8080/api/form",
+								'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
+								// "http://localhost:8080/api/form",
 								data,
 								{
 									headers: { "Content-Type": "multipart/form-data" },

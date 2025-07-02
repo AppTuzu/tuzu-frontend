@@ -20,7 +20,8 @@ const Download = () => {
 		const fetchData = async () => {
 			try {
 				const res = await axios.get(
-					`http://localhost:8080/api/download?orderId=${orderId}`
+					// `http://localhost:8080/api/download?orderId=${orderId}`
+					`https://tuzu-backend-785068118363.asia-south1.run.app/api/download?orderId=${orderId}`
 				);
 				setData(res.data);
 				setStatus("download");
@@ -291,10 +292,14 @@ const Download = () => {
 		}
 
 		try {
-			const res = await axios.post(`http://localhost:8080/api/update-sheet`, {
-				orderId,
-				desc: instructions.join(", "),
-			});
+			const res = await axios.post(
+				// `http://localhost:8080/api/update-sheet`
+				`https://tuzu-backend-785068118363.asia-south1.run.app/api/update-sheet`,
+				{
+					orderId,
+					desc: instructions.join(", "),
+				}
+			);
 			setStatus("review-confirm");
 		} catch (error) {
 			console.error("Error updating sheet:", error);
@@ -339,6 +344,7 @@ const Download = () => {
 
 					{/* main */}
 					{renderContent()}
+					
 				</motion.div>
 			</div>
 		</div>

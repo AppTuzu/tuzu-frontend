@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { ModelContext } from '../context/ModelContext';
 import DotBg from "../assets/dotBg.png";
+import { motion } from "motion/react";
+
 
 const OurApp = () => {
 
@@ -17,20 +19,22 @@ const OurApp = () => {
 			<img
 				loading="lazy"
 				src={DotBg}
-				alt=""
+				alt="Dot Pattern"
 				className="absolute w-lg h-full  opacity-5 -left-90 md:-left-80 lg:-left-60 xl:-left-20 2xl:-left-10 scale-150"
 			/>
-			<button
+			<motion.button
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
 				onClick={toggleModal}
 				className="border-2 text-2xl border-themeYellow/70 bg-themeBlue text-themeYellow font-semibold tracking-wider rounded-2xl py-5 px-16 md:px-32 lg:px-44 cursor-pointer transition duration-300 hover:scale-[101%] active:scale-[98%] ease-in-out z-10 shadow-lg hover:shadow-themeBlue/30 sm:text-3xl sm:py-6 sm:px-24 lg:text-4xl lg:py-7 w-full max-w-sm md:max-w-lg lg:max-w-2xl
         "
 			>
 				Our App
-			</button>
+			</motion.button>
 			<img
 				src={DotBg}
 				loading="lazy"
-				alt=""
+				alt="Dot Pattern"
 				className="absolute w-lg h-full opacity-5 scale-150 -right-90 md:-right-80 lg:-right-60 xl:-right-20 2xl:-right-10"
 			/>
 		</div>

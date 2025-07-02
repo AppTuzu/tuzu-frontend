@@ -20,9 +20,6 @@ const App = () => {
 		};
 	}, [isModalOpen]);
 
-	//! Entry Animations
-	//! Mobile Responsive
-	//! edit index.html
 
 	const Home = lazy(() => import("./pages/Home"));
 	const About = lazy(() => import("./pages/About"));

@@ -45,11 +45,12 @@ const Navbar = () => {
 
 	return (
 		<motion.nav
-			initial={{ y: 0 }}
+			initial={{ y: -100, opacity: 0 }}
 			animate={{
 				y: showNavbar ? 0 : -100,
 				opacity: showNavbar ? 1 : 0,
 			}}
+			whileInView={{ opacity: 1}}
 			transition={{
 				duration: 0.4,
 				type: "spring",
@@ -62,7 +63,7 @@ const Navbar = () => {
 			{/* bg-radial from-[#202020] to-[#2d2d2d] */}
 
 			{/* logo */}
-			<div>
+			<motion.div initial={{ opacity: 0}} animate={{ opacity: 1 }} transition={{ delay: 0.3}}>
 				<Link
 					onClick={() => setIsOpen(false)}
 					to={"/"}
@@ -74,7 +75,7 @@ const Navbar = () => {
 						className="w-29 cursor-pointer"
 					/>
 				</Link>
-			</div>
+			</motion.div>
 
 			{/* nav items */}
 			<div className="flex items-center justify-center">
