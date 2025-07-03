@@ -14,7 +14,7 @@ const Contact = () => {
 						<p>
 							TUZU MEDIA TECHNOLOGIES PRIVATE LIMITED <br />
 							UNIT 101, OXFORD TOWERS, 139, HAL OLD AIRPORT RD, H.A.L II Stage,
-							Bangalore North, Bangalore- 560008, Karnataka, India
+							Bangalore North, Bangalore- 560008, Karnataka, India.
 						</p>
 					</div>
 					<div>

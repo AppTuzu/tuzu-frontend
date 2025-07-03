@@ -5,12 +5,14 @@ import { DownloadIcon, OctagonAlert, Plus, Video, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Textarea } from "@/components/ui/textarea";
 
 const Download = () => {
 	// loading, download, review, review-confirm, download-confirm
 	const [status, setStatus] = useState("loading");
 	const [instructions, setInstruction] = useState([]);
 	const [newInstruction, setNewInstruction] = useState("");
+	const [description, setDescription] = useState("");
 	const [error, setError] = useState("");
 	const [data, setData] = useState(null);
 
@@ -27,8 +29,7 @@ const Download = () => {
 				setStatus("download");
 				setError("");
 			} catch (err) {
-				console.log(err);
-				setError("Network error");
+				setError("Failed to fetch order details. Please try again.");
 				setStatus("error");
 			}
 		};
@@ -137,8 +138,20 @@ const Download = () => {
 								<span className="bg-themeBlue absolute h-0.5 w-full -bottom-1 left-0"></span>
 							</p>
 
-							<label className="block text-sm font-medium text-gray-700 mt-8">
-								Add instructions
+							<div className="space-y-4 mt-8">
+								<label className="block text-sm font-medium text-gray-700">
+									Add description*
+								</label>
+								<Textarea
+									value={description}
+									placeholder="Describe your necessary changes to make."
+									className="border-yellow-200 focus:border-yellow-400 min-h-[80px] placeholder:text-sm"
+									onChange={(e) => setDescription(e.target.value)}
+								/>
+							</div>
+
+							<label className="block text-sm font-medium text-gray-700 mt-5">
+								Add instructions*
 							</label>
 
 							<div className="space-y-3">
@@ -197,6 +210,14 @@ const Download = () => {
 								)}
 							</div>
 						</motion.div>
+
+						{error && (
+							<div className="px-4 sm:px-8 pb-4">
+								<div className="bg-red-50 border-2 border-red-200 rounded-lg p-3">
+									<p className="text-sm text-red-600">{error}</p>
+								</div>
+							</div>
+						)}
 
 						<div className="px-4 sm:px-8 py-4 sm:py-6 border-t border-gray-100 flex gap-3 justify-end text-sm">
 							<button
@@ -286,8 +307,8 @@ const Download = () => {
 	};
 
 	const handleSubmit = async () => {
-		if (instructions.length === 0) {
-			setError("Please add at least one instruction.");
+		if (instructions.length === 0 || description.trim() === "") {
+			setError("Please fill required details.");
 			return;
 		}
 
@@ -297,13 +318,14 @@ const Download = () => {
 				`https://tuzu-backend-785068118363.asia-south1.run.app/api/update-sheet`,
 				{
 					orderId,
-					desc: instructions.join(", "),
+					instructions: instructions.join(", "),
+					description
 				}
 			);
 			setStatus("review-confirm");
 		} catch (error) {
 			console.error("Error updating sheet:", error);
-			setError("Failed to submit instructions. Please try again.");
+			setError(error || "Failed to submit the details. Please try again.");
 		}
 	};
 

@@ -26,7 +26,6 @@ const FormPrev = () => {
 	const [loading, setLoading] = useState(false);
 	const [uploadProgress, setUploadProgress] = useState(0);
 
-	// console.log(import.meta.env.VITE_BACKEND_URL);
 
 	useEffect(() => {
 		const isSocialMedia =
@@ -168,7 +167,7 @@ const FormPrev = () => {
 				},
 				
 				handler: async function (response) {
-					console.log("payment res - ", response);
+					// console.log("payment res - ", response);
 
 					try {
 						// 2. Verify Signature
@@ -190,7 +189,7 @@ const FormPrev = () => {
 								price,
 								response
 							);
-							console.log("Form Data for backend : ", data);
+							// console.log("Form Data for backend : ", data);
 							setLoading(true);
 							const res = await axios.post(
 								'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
@@ -218,7 +217,7 @@ const FormPrev = () => {
 								setOrderId(res.data.orderId);
 								setIsOrderCompleted(true);
 								console.info("Form submitted !!");
-								console.log("Response : ", res.data);
+								// console.log("Response : ", res.data);
 							} else {
 								setError("Failed to upload files. Please try again.");
 							}

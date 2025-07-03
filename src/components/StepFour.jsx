@@ -9,6 +9,8 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 		setAgreements({ ...agreements, [key]: checked });
 	};
 
+	const price = renderPrice(formData);
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 20 }}
@@ -43,7 +45,7 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 					transition={{ delay: 0.1 }}
 					className="text-xl md:text-2xl font-bold text-cyan-500"
 				>
-					Total price: ₹{renderPrice(formData)}
+					Total price: ₹ {price.toLocaleString()}
 				</motion.div>
 			</div>
 
