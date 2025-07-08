@@ -2,7 +2,7 @@ import OurApp from "../components/OurApp";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaEnvelope } from "react-icons/fa";
 import FAQ from "@/components/FAQ";
-import SocialMediaImg from "../assets/social-media.png";
+import SocialMediaImg from "../assets/social-media.webp";
 import {motion} from 'motion/react'
 
 

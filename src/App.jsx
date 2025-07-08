@@ -5,8 +5,8 @@ import { IoMdClose } from "react-icons/io";
 import { motion, AnimatePresence } from "motion/react";
 import { Suspense, lazy } from "react";
 import Loading from "./components/Loading";
-import GooglePlayLogo from "./assets/android-logo.png";
-import AppleStoreLogo from "./assets/apple-logo.png";
+import GooglePlayLogo from "./assets/android-logo.webp";
+import AppleStoreLogo from "./assets/apple-logo.webp";
 import "lenis/dist/lenis.css";
 import { ReactLenis } from "lenis/react";
 

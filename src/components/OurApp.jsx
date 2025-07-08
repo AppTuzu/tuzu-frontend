@@ -1,14 +1,12 @@
-import { useContext } from 'react'
-import { ModelContext } from '../context/ModelContext';
-import DotBg from "../assets/dotBg.png";
+import { useContext } from "react";
+import { ModelContext } from "../context/ModelContext";
+import DotBg from "../assets/dotBg.webp";
 import { motion } from "motion/react";
 
-
 const OurApp = () => {
+	const { toggleModal } = useContext(ModelContext);
 
-  const { toggleModal } = useContext(ModelContext);
-
-  return (
+	return (
 		<div
 			className="relative border-t border-t-themeBlue/20 flex justify-center items-center py-28 px-8 sm:px-14 overflow-hidden"
 			style={{
@@ -20,7 +18,7 @@ const OurApp = () => {
 				loading="lazy"
 				src={DotBg}
 				alt="Dot Pattern"
-				className="absolute w-lg h-full  opacity-5 -left-90 md:-left-80 lg:-left-60 xl:-left-20 2xl:-left-10 scale-150"
+				className="absolute h-full opacity-5 -left-90 md:-left-80 lg:-left-60 xl:-left-20 2xl:-left-10 scale-150"
 			/>
 			<motion.button
 				initial={{ filter: "blur(5px)" }}
@@ -36,10 +34,10 @@ const OurApp = () => {
 				src={DotBg}
 				loading="lazy"
 				alt="Dot Pattern"
-				className="absolute w-lg h-full opacity-5 scale-150 -right-90 md:-right-80 lg:-right-60 xl:-right-20 2xl:-right-10"
+				className="absolute h-full opacity-5 scale-150 -right-90 md:-right-80 lg:-right-60 xl:-right-20 2xl:-right-10"
 			/>
 		</div>
 	);
-}
+};
 
-export default OurApp
+export default OurApp;

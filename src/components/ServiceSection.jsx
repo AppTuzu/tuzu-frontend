@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "./Buttons";
-import SocialMediaPost from "../assets/social-media.png";
-import VerticalVideo from "../assets/vertical-video.png"
+import SocialMediaPost from "../assets/social-media.webp";
+import VerticalVideo from "../assets/vertical-video.webp"
 import { motion } from 'motion/react';
 
 const ServiceSection = () => {

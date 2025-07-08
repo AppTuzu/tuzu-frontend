@@ -23,6 +23,8 @@ const HeroSection = () => {
 							loading="lazy"
 							src="./logo.png"
 							alt="TUZU Logo"
+							width='104'
+							height='26'
 							className="w-26"
 						/>
 						- Your One - Stop

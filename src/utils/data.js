@@ -1,5 +1,5 @@
-import SocailMediaImg from "../assets/social-media.png";
-import VerticalVideoImg from "../assets/vertical-video.png";
+import SocailMediaImg from "../assets/social-media.webp";
+import VerticalVideoImg from "../assets/vertical-video.webp";
 
 export const servicePageInfo = [
 	{
