@@ -37,7 +37,7 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 			{/* Pricing */}
 			<div className="space-y-4">
 				<label className="block text-sm font-medium text-gray-700">
-					Upfront pricing
+					Pricing
 				</label>
 				<motion.div
 					initial={{ opacity: 0, scale: 0.95 }}
@@ -69,7 +69,7 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 						htmlFor="upfront"
 						className="text-sm text-gray-700 leading-relaxed"
 					>
-						I agree to the upfront payment for this order.
+						I agree to the payment for this order.
 					</label>
 				</motion.div>
 
@@ -79,9 +79,10 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 					transition={{ delay: 0.3 }}
 					className="p-4 bg-gray-50 rounded-lg border text-sm text-gray-600"
 				>
-					If your request includes extra edits like custom animations, advanced
-					retouching, or special effects, we will review your instructions and
-					confirm the additional cost. Check our pricing details here:{" "}
+					The final price is based on the content type and any add-ons you’ve
+					selected. If additional customizations (like animations or advanced
+					edits) are required, we’ll review your inputs and confirm any extra
+					cost before proceeding. Check our pricing details here -{" "}
 					<a
 						href="/pricing"
 						target="_blank"
@@ -202,7 +203,6 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 					<li>• Links: {formData.relatedLinks.length} provided</li>
 				</ul>
 			</motion.div>
-			
 		</motion.div>
 	);
 };

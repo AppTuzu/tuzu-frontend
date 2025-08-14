@@ -161,12 +161,12 @@ const About = () => {
 				</div>
 				<div className="flex flex-col gap-3 items-center justify-center">
 					<Button
-						href={"https://wa.me/917012175266"}
+						href={"https://wa.me/918078171908"}
 						icon={<IoLogoWhatsapp />}
 						title={"Chat with us"}
 					/>
 					<Button
-						href={"mailto:apptuzu@gmail.com?subject=Support%20Request"}
+						href={"mailto:hello@tuzuapp.com?subject=Support%20Request"}
 						icon={<FaEnvelope />}
 						title={"Write to us"}
 					/>
