@@ -7,7 +7,7 @@ const HeroSection = () => {
   const navigate = useNavigate()
 
   return (
-		<div className="w-full flex items-center justify-center px-8 py-36 h-screen bg-themeBlack">
+		<div className="w-full flex items-center justify-center px-8 py-36 h-dvh bg-themeBlack">
 			<div className="flex flex-col gap-9 items-center justify-center">
 				<div className="text-center">
 					{/* main heading */}

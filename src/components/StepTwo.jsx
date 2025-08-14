@@ -356,7 +356,7 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 
 						<div className="flex space-x-2">
 							<Input
-								placeholder="Add bike image in that transition"
+								placeholder="Replace background with beach in final clip."
 								value={newInstruction}
 								onChange={(e) => setNewInstruction(e.target.value)}
 								className="border-yellow-200 focus:border-yellow-400 placeholder:text-sm"

@@ -208,7 +208,7 @@ const Icon = ({ isOpen, toggleMenu }) => {
 			initial={{ borderRadius: "8px" }}
 			animate={{ borderRadius: isOpen ? "100%" : "8px" }}
 			// transition={{duration: 0.5, ease: "linear", delay: 0}}
-			className={`bg-zinc-600 ${isOpen ? "px-2" : "px-2"} py-1 cursor-pointer`}
+			className={`bg-transparent ${isOpen ? "px-2" : "px-2"} py-1 cursor-pointer`}
 		>
 			<motion.svg
 				width="35"
@@ -229,7 +229,7 @@ const Icon = ({ isOpen, toggleMenu }) => {
 					y1="1"
 					x2="20"
 					y2="1"
-					stroke="#202020"
+					stroke="#E0E0E0"
 					strokeWidth="1.5"
 					transition={{ duration: 0.5, ease: "easeInOut" }}
 					strokeLinecap="round"
@@ -247,7 +247,7 @@ const Icon = ({ isOpen, toggleMenu }) => {
 					y1="7"
 					x2="20"
 					y2="7"
-					stroke="#202020"
+					stroke="#E0E0E0"
 					strokeWidth="1.5"
 					strokeLinecap="round"
 				/>
@@ -264,7 +264,7 @@ const Icon = ({ isOpen, toggleMenu }) => {
 					y1="13"
 					x2="20"
 					y2="13"
-					stroke="#202020"
+					stroke="#E0E0E0"
 					strokeWidth="1.5"
 					strokeLinecap="round"
 				/>
