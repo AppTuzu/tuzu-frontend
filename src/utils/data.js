@@ -81,8 +81,8 @@ export const videoDurationInfo = [
 	},
 	{
 		id: "d4",
-		title: "120 seconds",
-		value: "120-seconds",
+		title: "180 seconds",
+		value: "180-seconds",
 	},
 ];
 
@@ -196,6 +196,7 @@ export const initialFormData = {
 	language: "english",
 	textToSpeech: "no",
 	textToSpeechFile: null,
+	textToSpeechCharacter: "",
 	textOverlay: "no",
 	textFile: null,
 	instructions: [],

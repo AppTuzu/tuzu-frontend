@@ -25,6 +25,7 @@ export const createFormData = (formData, price, response) => {
 	data.append("language", formData.language);
 	data.append("textToSpeech", formData.textToSpeech);
 	data.append("textOverlay", formData.textOverlay);
+	data.append("textToSpeechCharacter", formData.textToSpeechCharacter);
 	if (formData.customText) {
 		data.append("customText", formData.customText);
 	}
@@ -61,8 +62,8 @@ export const renderPrice = (formData) => {
 		price = 1299;
 		if (formData.videoDuration === "90-seconds") {
 			price += 299;
-		} else if (formData.videoDuration === "120-seconds") {
-			price += 599;
+		} else if (formData.videoDuration === "180-seconds") {
+			price += 799;
 		} else {
 			price += 0;
 		}
@@ -72,7 +73,7 @@ export const renderPrice = (formData) => {
 				price += 499;
 			} else if (formData.videoDuration === "90-seconds") {
 				price += 649;
-			} else if (formData.videoDuration === "120-seconds") {
+			} else if (formData.videoDuration === "180-seconds") {
 				price += 799;
 			} else {
 				price += 349;

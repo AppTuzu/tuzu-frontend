@@ -25,6 +25,11 @@ const Download = () => {
 					// `http://localhost:8080/api/download?orderId=${orderId}`
 					`https://tuzu-backend-785068118363.asia-south1.run.app/api/download?orderId=${orderId}`
 				);
+				if (!res.data.success){
+					setError(res.data.message || "Order not found");
+					setStatus("error");
+					return;
+				}
 				setData(res.data);
 				setStatus("download");
 				setError("");
@@ -275,7 +280,7 @@ const Download = () => {
 				);
 			case "loading":
 				return (
-					<div className="flex grow items-center justify-center gap-3">
+					<div className="flex grow items-center justify-center gap-3 absolute inset-0 z-20 bg-white">
 						<motion.div
 							className="w-5 h-5 border-4 border-gray-300 border-t-4 border-t-themeBlue rounded-full"
 							animate={{ rotate: 360 }}
@@ -292,7 +297,7 @@ const Download = () => {
 				);
 			case "error":
 				return (
-					<div className="flex items-center justify-center grow gap-2 text-red-500">
+					<div className="flex items-center justify-center grow gap-2 text-red-500 absolute inset-0 z-20 bg-white">
 						<OctagonAlert />
 						<p>{error || "Something went wrong..!!"}</p>
 					</div>
@@ -347,13 +352,13 @@ const Download = () => {
 								transition={{ delay: 0.2 }}
 								className="text-lg md:text-2xl font-semibold text-gray-900"
 							>
-								{status === "download"
+								{status === "download" || status === "loading"
 									? "Your content is ready"
 									: status === "review"
 									? "Add instructions"
 									: "Confirmation"}
 								<span className="block text-gray-400 font-light text-sm">
-									{status === "download"
+									{status === "download" || status === "loading"
 										? "Please review your file and let us know how you would like to proceed"
 										: status === "review"
 										? "Share your edit instructions"

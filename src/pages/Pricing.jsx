@@ -33,7 +33,7 @@ const Pricing = () => {
 					<p>Editing beyond 60 seconds will cost extra:</p>
 					<ul className="list-disc pl-5 mb-3">
 						<li>Up to 90 seconds: +₹299</li>
-						<li>Up to 120 seconds: +₹599</li>
+						<li>Up to 180 seconds: +₹799</li>
 					</ul>
 					<p>
 						Add-ons: <br /> Text-to-Speech (Tuzu default characters): +₹349

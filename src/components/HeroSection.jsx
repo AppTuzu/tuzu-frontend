@@ -7,10 +7,11 @@ const HeroSection = () => {
   const navigate = useNavigate()
 
   return (
-		<div className="w-full flex items-center justify-center px-8 py-36 h-dvh bg-themeBlack">
+	//?  h-dvh
+		<div className="w-full flex items-center justify-center px-8 py-32 min-h-screen bg-themeBlack">
 			<div className="flex flex-col gap-9 items-center justify-center">
+				{/* main heading */}
 				<div className="text-center">
-					{/* main heading */}
 					<motion.h1
 						initial={{ opacity: 0, filter: "blur(5px)" }}
 						animate={{ opacity: 1, filter: "blur(0px)" }}

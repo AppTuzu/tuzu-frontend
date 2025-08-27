@@ -135,6 +135,10 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 										value !== "speech-file"
 											? null
 											: formData.textToSpeechFile || null,
+									textToSpeechCharacter:
+										value === "no"
+											? ""
+											: formData.textToSpeechCharacter || "male-voice",
 								});
 							}}
 							className="space-y-1"
@@ -217,6 +221,48 @@ const StepTwo = ({ formData, updateFormData, setError }) => {
 										className="hidden"
 										onChange={(e) => handleScriptFileUpload(e.target.files)}
 									/>
+								</motion.div>
+							)}
+						</AnimatePresence>
+						<AnimatePresence>
+							{(formData.textToSpeech === "speech-file" ||
+								formData.textToSpeech === "speech-script") && (
+								<motion.div
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: 20 }}
+									className="mt-6"
+								>
+									<label className="block text-sm font-medium text-gray-700 mb-3">
+										Text-to-speech character
+									</label>
+									<p className="text-xs text-gray-400 mb-3">
+										Choose your preferred voice type for the text-to-speech
+										audio.
+									</p>
+									<RadioGroup
+										value={formData.textToSpeechCharacter}
+										onValueChange={(value) =>
+											updateFormData({ textToSpeechCharacter: value })
+										}
+										className="space-y-1"
+									>
+										<div className="flex items-center space-x-2">
+											<RadioGroupItem value="male-voice" id="male-char" />
+											<Label htmlFor="male-char" className="text-sm">
+												Male voice (Tuzu default character)
+											</Label>
+										</div>
+										<div className="flex items-center space-x-2">
+											<RadioGroupItem value="female-voice" id="female-char" />
+											<Label htmlFor="female-char" className="text-sm">
+												Female voice (Tuzu default character)
+											</Label>
+										</div>
+										<p className="text-xs text-gray-500 -mt-1 border-1 w-fit px-2 py-0.5 rounded-md border-gray-400 bg-gray-100">
+											More characters coming soon!
+										</p>
+									</RadioGroup>
 								</motion.div>
 							)}
 						</AnimatePresence>

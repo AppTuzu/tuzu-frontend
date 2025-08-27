@@ -37,7 +37,7 @@ const StepFour = ({ formData, agreements, setAgreements }) => {
 			{/* Pricing */}
 			<div className="space-y-4">
 				<label className="block text-sm font-medium text-gray-700">
-					Pricing
+					To pay
 				</label>
 				<motion.div
 					initial={{ opacity: 0, scale: 0.95 }}

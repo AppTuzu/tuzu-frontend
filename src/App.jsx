@@ -22,8 +22,6 @@ const App = () => {
 		};
 	}, [isModalOpen]);
 
-	//! clear consoles & description in revision
-
 	const Home = lazy(() => import("./pages/Home"));
 	const About = lazy(() => import("./pages/About"));
 	const Navbar = lazy(() => import("./components/Navbar"));

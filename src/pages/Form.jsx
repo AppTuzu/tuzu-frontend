@@ -7,7 +7,11 @@ import StepThree from "@/components/StepThree";
 import StepFour from "@/components/StepFour";
 import axios from "axios";
 import { initialFormData } from "@/utils/data";
-import { createFormData, renderPrice, validateForm } from "@/utils/helperFunction";
+import {
+	createFormData,
+	renderPrice,
+	validateForm,
+} from "@/utils/helperFunction";
 import OrderConfirmation from "@/components/OrderConfirmation";
 import OrderLoading from "@/components/OrderLoading";
 
@@ -26,6 +30,26 @@ const FormPrev = () => {
 	const [loading, setLoading] = useState(false);
 	const [uploadProgress, setUploadProgress] = useState(0);
 
+	useEffect(() => {
+		const savedData = sessionStorage.getItem("formData");
+		if (savedData) {
+			const parsed = JSON.parse(savedData);
+			setFormData((prev) => ({
+				...prev,
+				...parsed,
+				files: [], // reset file on reload
+				brandKit: null,
+				textFile: null,
+				textToSpeechFile: null
+			}));
+		}
+	}, []);
+
+	// Save to sessionStorage whenever formData changes
+	useEffect(() => {
+		const { files, brandKit, textFile, textToSpeechFile, ...dataToSave } = formData;
+		sessionStorage.setItem("formData", JSON.stringify(dataToSave));
+	}, [formData]);
 
 	useEffect(() => {
 		const isSocialMedia =
@@ -108,15 +132,14 @@ const FormPrev = () => {
 		}
 		if (
 			stepNumber === 4 &&
-			(formData.files.length === 0 ||
-			formData.description.trim() === "")
+			(formData.files.length === 0 || formData.description.trim() === "")
 		) {
 			setError(
 				"Please fill the required details before proceeding to the next step."
 			);
 			return;
 		}
-			setError("");
+		setError("");
 		setCurrentStep(stepNumber);
 	};
 
@@ -138,20 +161,20 @@ const FormPrev = () => {
 		}
 
 		setError("");
-		const price = renderPrice(formData)
+		const price = renderPrice(formData);
 		// for (const [key, value] of data.entries()) {
 		// 	console.log(`${key}:`, value);
 		// }
 
 		try {
-
 			const orderRes = await axios.post(
 				// "http://localhost:8080/create-order"
-				"https://tuzu-backend-785068118363.asia-south1.run.app/create-order"
-				, {
-				amount: price,
-				currency: "INR",
-			});
+				"https://tuzu-backend-785068118363.asia-south1.run.app/create-order",
+				{
+					amount: price,
+					currency: "INR",
+				}
+			);
 
 			const options = {
 				key: "rzp_test_8M04xY5DcVQIPO",
@@ -165,7 +188,7 @@ const FormPrev = () => {
 					email: formData.email,
 					contact: formData.number,
 				},
-				
+
 				handler: async function (response) {
 					// console.log("payment res - ", response);
 
@@ -181,18 +204,13 @@ const FormPrev = () => {
 							}
 						);
 
-						
 						if (verifyRes.data.status === "success") {
 							// 3. Proceed to upload file
-							const data = createFormData(
-								formData,
-								price,
-								response
-							);
+							const data = createFormData(formData, price, response);
 							// console.log("Form Data for backend : ", data);
 							setLoading(true);
 							const res = await axios.post(
-								'https://tuzu-backend-785068118363.asia-south1.run.app/api/form',
+								"https://tuzu-backend-785068118363.asia-south1.run.app/api/form",
 								// "http://localhost:8080/api/form",
 								data,
 								{
@@ -242,7 +260,6 @@ const FormPrev = () => {
 				console.error("Payment Failed:", response);
 				setError("Payment failed. Please try again.");
 			});
-
 		} catch (error) {
 			console.error("Upload Failed", error);
 			setError("Payment initialization failed. Please try again.");
